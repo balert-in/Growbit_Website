@@ -1,0 +1,27 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap');
+
+:root {
+  --color-secondary-1: #9cd4af;
+  --color-secondary-2: #75ccc3;
+  --color-secondary-3: #d7e48a;
+}
+
+.bg-blend-secondary {
+  background: linear-gradient(135deg, var(--color-secondary-1) 0%, var(--color-secondary-2) 50%, var(--color-secondary-3) 100%);
+}
+
+.font-caveat {
+  font-family: "Caveat", cursive;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.font-Geist {
+  font-family: "Geist", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}

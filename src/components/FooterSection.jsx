@@ -25,8 +25,8 @@ const socials = [
 ]
 
 const policies = [
-  { label: 'Privacy Policy', to: '/privacy' },
-  { label: 'Terms of Service', to: '/terms' },
+  { label: 'Privacy Policy', to: '/PrivacyPolicy' },
+  { label: 'Terms of Service', to: '/TermsAndConditions' },
 ]
 
 const FooterSection = () => (

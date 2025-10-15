@@ -1,9 +1,4 @@
 import React from 'react'
-// import HeroSection from '../components/HeroSection'
-// import AboutSection from '../components/AboutSection'
-// import ProcessStepSection from '../components/ProcessStepSection'
-// import CallToActionSection from '../components/CallToActionSection'
-// import TestimonialSection from '../components/TestimonialSection'
 import ServicesSection from '../components/ServicesSection'
 
 import { motion } from "framer-motion";

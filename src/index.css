@@ -3,15 +3,18 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #0B1120;
-  --color-secondary: #fbfbfb;
-  --color-secondary-1: #9cd4af;
-  --color-secondary-2: #75ccc3;
-  --color-secondary-3: #d7e48a;
+  --color-primary: #09090b;
+  --color-secondary: #18181b;
+  --color-tertiary: #27272a;
+  --color-text-primary: #f4f4f5;
+  --color-text-secondary: #a1a1aa;
+  --color-accent-1: #9cd4af;
+  --color-accent-2: #75ccc3;
+  --color-accent-3: #d7e48a;
 }
 
 .bg-blend-secondary {
-  background: linear-gradient(135deg, var(--color-secondary-1) 0%, var(--color-secondary-2) 50%, var(--color-secondary-3) 100%);
+  background: linear-gradient(135deg, var(--color-accent-1) 0%, var(--color-accent-2) 50%, var(--color-accent-3) 100%);
 }
 
 .font-caveat {

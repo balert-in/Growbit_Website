@@ -46,7 +46,7 @@ export const FeatureCard = ({ feature, index }) => {
                 }}
             >
                 <div
-                    className="relative overflow-hidden rounded-2xl sm:rounded-3xl lg:rounded-[1.5rem] bg-white border border-gray-200 shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
+                    className="relative overflow-hidden rounded-2xl sm:rounded-3xl lg:rounded-[1.5rem] bg-[#18181b] border border-gray-800 shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
                 >
                     <div
                         className="absolute top-0 right-0 w-[400px] sm:w-[600px] lg:w-[800px] h-[400px] sm:h-[600px] lg:h-[800px] rounded-full blur-[80px] sm:blur-[100px] lg:blur-[120px] opacity-10 pointer-events-none"
@@ -57,11 +57,11 @@ export const FeatureCard = ({ feature, index }) => {
 
                         <div className="p-6 sm:p-8 md:p-12 lg:p-16 xl:p-20 flex flex-col justify-center relative z-10 order-2 lg:order-1">
 
-                            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0B1120] mb-4 sm:mb-5 lg:mb-6 leading-tight tracking-tight">
+                            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white mb-4 sm:mb-5 lg:mb-6 leading-tight tracking-tight">
                                 {feature.title}
                             </h3>
 
-                            <p className="text-sm sm:text-base lg:text-md text-gray-600 mb-6 sm:mb-8 lg:mb-10 leading-relaxed font-medium max-w-md">
+                            <p className="text-sm sm:text-base lg:text-md text-gray-400 mb-6 sm:mb-8 lg:mb-10 leading-relaxed font-medium max-w-md">
                                 {feature.description}
                             </p>
 
@@ -74,16 +74,16 @@ export const FeatureCard = ({ feature, index }) => {
                                         >
                                             <Check
                                                 className="size-2.5 sm:size-3 stroke-[3]"
-                                                style={{ color: '#0B1120' }}
+                                                style={{ color: '#09090b' }}
                                             />
                                         </div>
-                                        <span className="text-sm sm:text-base text-gray-700 font-medium">{point}</span>
+                                        <span className="text-sm sm:text-base text-gray-300 font-medium">{point}</span>
                                     </div>
                                 ))}
                             </div>
                         </div>
 
-                        <div className="relative min-h-[300px] sm:min-h-[350px] lg:min-h-auto overflow-hidden bg-gray-50 lg:bg-transparent flex items-center justify-center p-6 sm:p-8 order-1 lg:order-2">
+                        <div className="relative min-h-[300px] sm:min-h-[350px] lg:min-h-auto overflow-hidden bg-[#09090b] lg:bg-transparent flex items-center justify-center p-6 sm:p-8 order-1 lg:order-2">
 
                             <div
                                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4/5 h-4/5 rounded-full blur-[60px] sm:blur-[80px] opacity-30 sm:opacity-40"

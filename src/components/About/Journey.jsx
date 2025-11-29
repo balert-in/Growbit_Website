@@ -4,7 +4,9 @@ import { ABOUT_DATA } from '../../constants'
 
 const Journey = () => {
     return (
-        <section className="relative bg-white py-16 sm:py-20 md:py-24 overflow-hidden">
+        <section className="relative bg-[#09090b] py-16 sm:py-20 md:py-24 overflow-hidden">
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-bl from-[#75ccc3]/10 via-[#9cd4af]/5 to-transparent rounded-full blur-[100px] pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-[#9cd4af]/10 via-[#d7e48a]/5 to-transparent rounded-full blur-[100px] pointer-events-none" />
             <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                     <motion.div
@@ -14,7 +16,7 @@ const Journey = () => {
                         transition={{ duration: 0.8 }}
                         className="relative"
                     >
-                        <div className="absolute -inset-4 bg-gradient-to-br from-[#9cd4af]/20 to-[#75ccc3]/20 rounded-3xl blur-2xl opacity-60" />
+                        <div className="absolute -inset-4 bg-gradient-to-br from-[#9cd4af]/20 to-[#75ccc3]/20 rounded-3xl blur-2xl opacity-40" />
                         <div className="relative transform rotate-2 hover:rotate-0 transition-transform duration-500">
                             <img
                                 src={ABOUT_DATA.journey.imageUrl}
@@ -31,10 +33,10 @@ const Journey = () => {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="space-y-8"
                     >
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0B1120] leading-tight">
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight">
                             {ABOUT_DATA.journey.title}
                         </h2>
-                        <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
+                        <div className="space-y-6 text-lg text-gray-400 leading-relaxed">
                             {ABOUT_DATA.journey.paragraphs.map((paragraph, index) => (
                                 <p key={index}>{paragraph}</p>
                             ))}

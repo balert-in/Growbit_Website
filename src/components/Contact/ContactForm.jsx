@@ -52,10 +52,10 @@ const ContactForm = () => {
         }
     }
 
-    const inputClasses = "w-full bg-[#f3f4f6] border-none rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-[#0B1120]/20 transition-all duration-300 placeholder-gray-400 text-sm text-gray-700 font-medium"
-    const errorClasses = "border-red-500 focus:ring-red-500/20"
-    const labelClasses = "block text-xs font-bold text-[#0B1120] mb-1.5 uppercase tracking-wide"
-    const errorTextClasses = "text-xs text-red-500 mt-1 font-medium"
+    const inputClasses = "w-full bg-[#18181b] border border-gray-800 rounded-lg px-4 py-3 outline-none focus:ring-2 focus:ring-[#75ccc3]/20 focus:border-[#75ccc3]/30 transition-all duration-300 placeholder-gray-500 text-sm text-gray-200 font-medium"
+    const errorClasses = "border-red-500/50 focus:ring-red-500/20"
+    const labelClasses = "block text-xs font-bold text-gray-300 mb-1.5 uppercase tracking-wide"
+    const errorTextClasses = "text-xs text-red-400 mt-1 font-medium"
 
     return (
         <motion.form
@@ -161,10 +161,10 @@ const ContactForm = () => {
                         name="agree"
                         checked={formData.agree}
                         onChange={handleChange}
-                        className="mt-0.5 w-4 h-4 rounded border-gray-300 text-[#0B1120] focus:ring-[#0B1120]"
+                        className="mt-0.5 w-4 h-4 rounded border-gray-600 bg-[#18181b] text-[#75ccc3] focus:ring-[#75ccc3] focus:ring-offset-0"
                     />
                     <p className="text-xs text-gray-500 leading-relaxed">
-                        I agree to the <a href="#" className="underline hover:text-[#0B1120] font-medium">Privacy Policy</a> and consent to being contacted.
+                        I agree to the <a href="#" className="underline hover:text-[#75ccc3] font-medium text-gray-400 transition-colors">Privacy Policy</a> and consent to being contacted.
                     </p>
                 </div>
                 {errors.agree && <p className={errorTextClasses}>{errors.agree}</p>}
@@ -174,7 +174,7 @@ const ContactForm = () => {
                 whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.99 }}
                 type="submit"
-                className="w-full bg-[#0B1120] text-white font-bold py-3.5 rounded-xl flex items-center justify-center gap-2 hover:bg-gray-800 transition-colors shadow-lg hover:shadow-xl text-sm uppercase tracking-wide mt-2"
+                className="w-full bg-white text-[#09090b] font-bold py-3.5 rounded-xl flex items-center justify-center gap-2 hover:bg-gray-200 transition-colors shadow-lg hover:shadow-xl text-sm uppercase tracking-wide mt-2"
             >
                 <span>Send Message</span>
             </motion.button>

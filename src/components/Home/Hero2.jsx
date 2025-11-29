@@ -48,10 +48,10 @@ const FlipText = ({ children }) => {
 };
 
 const Screen1 = () => (
-    <div className="w-full h-full bg-white flex flex-col p-5">
+    <div className="w-full h-full bg-[#18181b] flex flex-col p-5">
         <div className="flex justify-between items-center mb-4">
-            <h3 className="text-sm font-bold text-gray-800">Overview</h3>
-            <div className="w-6 h-6 bg-gray-100 rounded-full"></div>
+            <h3 className="text-sm font-bold text-gray-200">Overview</h3>
+            <div className="w-6 h-6 bg-gray-800 rounded-full"></div>
         </div>
         <div className="mb-4">
             <h2 className="text-2xl font-bold text-[#75ccc3]">$124,500</h2>
@@ -65,24 +65,24 @@ const Screen1 = () => (
             <div className="w-1/5 bg-[#9CD4AF] h-[60%] rounded-t-md"></div>
         </div>
         <div className="mt-auto space-y-2">
-            <div className="flex items-center justify-between p-2 bg-gray-50 rounded-lg">
+            <div className="flex items-center justify-between p-2 bg-gray-800/50 rounded-lg">
                 <div className="flex items-center gap-2">
                     <div className="w-6 h-6 rounded-full bg-[#d7e48a] flex items-center justify-center">
                         <Users className="w-3 h-3 text-white" />
                     </div>
                     <div>
-                        <div className="text-[10px] font-bold text-gray-800">New sub</div>
+                        <div className="text-[10px] font-bold text-gray-200">New sub</div>
                     </div>
                 </div>
                 <span className="text-[10px] font-bold text-green-600">+$49</span>
             </div>
-            <div className="flex items-center justify-between p-2 bg-gray-50 rounded-lg">
+            <div className="flex items-center justify-between p-2 bg-gray-800/50 rounded-lg">
                 <div className="flex items-center gap-2">
                     <div className="w-6 h-6 rounded-full bg-[#75ccc3] flex items-center justify-center">
                         <DollarSign className="w-3 h-3 text-white" />
                     </div>
                     <div>
-                        <div className="text-[10px] font-bold text-gray-800">Sale</div>
+                        <div className="text-[10px] font-bold text-gray-200">Sale</div>
                     </div>
                 </div>
                 <span className="text-[10px] font-bold text-green-600">+$250</span>
@@ -92,59 +92,59 @@ const Screen1 = () => (
 )
 
 const Screen2 = () => (
-    <div className="w-full h-full bg-white flex flex-col p-5">
+    <div className="w-full h-full bg-[#18181b] flex flex-col p-5">
         <div className="flex justify-between items-center mb-4">
-            <h3 className="text-sm font-bold text-gray-800">Analytics</h3>
-            <div className="w-6 h-6 bg-gray-100 rounded-full"></div>
+            <h3 className="text-sm font-bold text-gray-200">Analytics</h3>
+            <div className="w-6 h-6 bg-gray-800 rounded-full"></div>
         </div>
         <div className="grid grid-cols-2 gap-3 mb-4">
-            <div className="bg-blue-50 p-3 rounded-xl">
+            <div className="bg-blue-900/20 p-3 rounded-xl">
                 <Activity className="w-4 h-4 text-blue-500 mb-1" />
-                <div className="text-lg font-bold text-gray-800">85%</div>
-                <div className="text-[10px] text-gray-500">Engage</div>
+                <div className="text-lg font-bold text-gray-200">85%</div>
+                <div className="text-[10px] text-gray-400">Engage</div>
             </div>
-            <div className="bg-purple-50 p-3 rounded-xl">
+            <div className="bg-purple-900/20 p-3 rounded-xl">
                 <TrendingUp className="w-4 h-4 text-purple-500 mb-1" />
-                <div className="text-lg font-bold text-gray-800">+12%</div>
-                <div className="text-[10px] text-gray-500">Growth</div>
+                <div className="text-lg font-bold text-gray-200">+12%</div>
+                <div className="text-[10px] text-gray-400">Growth</div>
             </div>
         </div>
-        <div className="bg-gray-50 p-3 rounded-xl h-32 mb-3 flex items-center justify-center">
-            <div className="w-24 h-24 rounded-full border-4 border-gray-200 border-t-[#75ccc3] border-r-[#d7e48a]"></div>
+        <div className="bg-gray-800/50 p-3 rounded-xl h-32 mb-3 flex items-center justify-center">
+            <div className="w-24 h-24 rounded-full border-4 border-gray-700 border-t-[#75ccc3] border-r-[#d7e48a]"></div>
         </div>
     </div>
 )
 
 const Screen3 = () => (
-    <div className="w-full h-full bg-white flex flex-col p-5">
+    <div className="w-full h-full bg-[#18181b] flex flex-col p-5">
         <div className="flex justify-between items-center mb-4">
-            <h3 className="text-sm font-bold text-gray-800">Team</h3>
-            <div className="w-6 h-6 bg-gray-100 rounded-full"></div>
+            <h3 className="text-sm font-bold text-gray-200">Team</h3>
+            <div className="w-6 h-6 bg-gray-800 rounded-full"></div>
         </div>
         <div className="space-y-3">
             {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="flex items-center gap-3 p-2 border border-gray-100 rounded-lg bg-white">
+                <div key={i} className="flex items-center gap-3 p-2 border border-gray-800 rounded-lg bg-[#18181b]">
                     <div className="w-8 h-8 rounded-full bg-gray-200 overflow-hidden">
                         <img src={`https://i.pravatar.cc/100?img=${i + 20}`} alt="User" className="w-full h-full object-cover" />
                     </div>
                     <div className="flex-1">
-                        <div className="h-2 bg-gray-200 rounded w-16 mb-1"></div>
-                        <div className="h-1.5 bg-gray-100 rounded w-10"></div>
+                        <div className="h-2 bg-gray-700 rounded w-16 mb-1"></div>
+                        <div className="h-1.5 bg-gray-800 rounded w-10"></div>
                     </div>
                 </div>
             ))}
         </div>
-        <div className="mt-auto bg-[#0B1120] text-white p-3 rounded-lg text-center text-xs font-bold">
+        <div className="mt-auto bg-white text-[#09090b] p-3 rounded-lg text-center text-xs font-bold">
             Invite Member
         </div>
     </div>
 )
 
 const Screen4 = () => (
-    <div className="w-full h-full bg-white flex flex-col p-5">
+    <div className="w-full h-full bg-[#18181b] flex flex-col p-5">
         <div className="flex justify-between items-center mb-4">
-            <h3 className="text-sm font-bold text-gray-800">Goals</h3>
-            <div className="w-6 h-6 bg-gray-100 rounded-full"></div>
+            <h3 className="text-sm font-bold text-gray-200">Goals</h3>
+            <div className="w-6 h-6 bg-gray-800 rounded-full"></div>
         </div>
         <div className="space-y-4">
             <div>
@@ -152,7 +152,7 @@ const Screen4 = () => (
                     <span className="font-bold">Q1 Revenue</span>
                     <span className="text-green-600">92%</span>
                 </div>
-                <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
                     <div className="h-full bg-[#75ccc3] w-[92%]"></div>
                 </div>
             </div>
@@ -161,7 +161,7 @@ const Screen4 = () => (
                     <span className="font-bold">User Growth</span>
                     <span className="text-blue-600">78%</span>
                 </div>
-                <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
                     <div className="h-full bg-blue-400 w-[78%]"></div>
                 </div>
             </div>
@@ -170,7 +170,7 @@ const Screen4 = () => (
                     <span className="font-bold">Retention</span>
                     <span className="text-orange-600">64%</span>
                 </div>
-                <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
                     <div className="h-full bg-orange-400 w-[64%]"></div>
                 </div>
             </div>
@@ -179,20 +179,20 @@ const Screen4 = () => (
 )
 
 const Screen5 = () => (
-    <div className="w-full h-full bg-white flex flex-col p-5">
+    <div className="w-full h-full bg-[#18181b] flex flex-col p-5">
         <div className="flex justify-between items-center mb-4">
-            <h3 className="text-sm font-bold text-gray-800">Messages</h3>
-            <div className="w-6 h-6 bg-gray-100 rounded-full"></div>
+            <h3 className="text-sm font-bold text-gray-200">Messages</h3>
+            <div className="w-6 h-6 bg-gray-800 rounded-full"></div>
         </div>
         <div className="space-y-3">
             {[1, 2, 3].map((i) => (
-                <div key={i} className="flex gap-3 p-2 border-b border-gray-50">
-                    <div className="w-8 h-8 rounded-full bg-gray-200 overflow-hidden shrink-0">
+                <div key={i} className="flex gap-3 p-2 border-b border-gray-800">
+                    <div className="w-8 h-8 rounded-full bg-gray-700 overflow-hidden shrink-0">
                         <img src={`https://i.pravatar.cc/100?img=${i + 30}`} alt="User" className="w-full h-full object-cover" />
                     </div>
                     <div>
-                        <div className="text-xs font-bold text-gray-800 mb-0.5">Sarah Connor</div>
-                        <div className="text-[10px] text-gray-500 leading-tight">Hey, can we schedule a call for tomorrow?</div>
+                        <div className="text-xs font-bold text-gray-200 mb-0.5">Sarah Connor</div>
+                        <div className="text-[10px] text-gray-400 leading-tight">Hey, can we schedule a call for tomorrow?</div>
                     </div>
                 </div>
             ))}
@@ -272,7 +272,7 @@ const Hero2 = () => {
     }
 
     return (
-        <div className="relative w-full min-h-screen bg-white overflow-hidden flex flex-col">
+        <div className="relative w-full min-h-screen bg-[#09090b] overflow-hidden flex flex-col">
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
                 <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-[#75ccc3]/20 blur-[120px]" />
                 <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-[#d7e48a]/20 blur-[120px]" />
@@ -287,7 +287,7 @@ const Hero2 = () => {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="text-4xl md:text-5xl font-bold leading-[1.1] mb-4 tracking-tight text-[#0B1120]"
+                        className="text-4xl md:text-5xl font-bold leading-[1.1] mb-4 tracking-tight text-white"
                     >
                         Your All-In-One Partner for <br />
                         <span className="relative inline-block">
@@ -314,7 +314,7 @@ const Hero2 = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
-                        className="text-base md:text-md text-gray-500 mb-6 leading-relaxed max-w-xl mx-auto"
+                        className="text-base md:text-md text-gray-400 mb-6 leading-relaxed max-w-xl mx-auto"
                     >
                         We bridge the gap between strategy and execution. From development gigs to high-level consulting, Growbit provides the ecosystem your business needs to scale efficiently.
                     </motion.p>
@@ -329,7 +329,7 @@ const Hero2 = () => {
                             className="relative inline-flex overflow-hidden rounded-full p-[2px] focus:outline-none shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
                         >
                             <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#0B1120_0%,#4bffec_50%,#0B1120_100%)]" />
-                            <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-[#0B1120] px-8 py-3.5 text-sm md:text-base font-medium text-white backdrop-blur-3xl">
+                            <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-white px-8 py-3.5 text-sm md:text-base font-medium text-[#09090b] backdrop-blur-3xl">
                                 <FlipText>Start Growing Now</FlipText>
                             </span>
                         </motion.button>
@@ -340,8 +340,8 @@ const Hero2 = () => {
 
                     <div className="relative w-full h-full flex justify-center scale-[0.6] sm:scale-[0.7] md:scale-[0.85] lg:scale-100 origin-top">
 
-                        <div className="absolute z-40 w-[300px] h-[600px] rounded-[3rem] shadow-md border-[8px] border-[#0B1120] pointer-events-none bg-transparent ring-2 ring-[#2a303c]/20">
-                            <div className="absolute top-[-2px] left-1/2 transform -translate-x-1/2 w-32 h-5 bg-[#0B1120] rounded-b-2xl z-50"></div>
+                        <div className="absolute z-40 w-[300px] h-[600px] rounded-[3rem] shadow-md border-[8px] border-[#27272a] pointer-events-none bg-transparent ring-2 ring-[#2a303c]/20">
+                            <div className="absolute top-[-2px] left-1/2 transform -translate-x-1/2 w-32 h-5 bg-[#27272a] rounded-b-2xl z-50"></div>
                         </div>
 
                         <div className="relative w-full h-full flex justify-center items-start pt-3">
@@ -350,7 +350,7 @@ const Hero2 = () => {
                                 return (
                                     <motion.div
                                         key={screen.id}
-                                        className="absolute w-[276px] h-[576px] bg-white rounded-[2.5rem] shadow-md overflow-hidden border border-gray-100 origin-bottom"
+                                        className="absolute w-[276px] h-[576px] bg-[#18181b] rounded-[2.5rem] shadow-md overflow-hidden border border-gray-800 origin-bottom"
                                         initial={false}
                                         animate={{
                                             x: style.x,
@@ -369,7 +369,7 @@ const Hero2 = () => {
                                         </div>
 
                                         {style.zIndex < 30 && (
-                                            <div className="absolute inset-0 bg-white/30 backdrop-blur-[1px]" />
+                                            <div className="absolute inset-0 bg-[#09090b]/30 backdrop-blur-[1px]" />
                                         )}
                                     </motion.div>
                                 )

@@ -6,22 +6,22 @@ import FAQ from '../components/Contact/FAQ'
 
 const Contact = () => {
     return (
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen bg-[#09090b]">
             <ContactHero />
 
-            <section className="relative py-16 sm:py-20 md:py-24 bg-white overflow-hidden">
+            <section className="relative py-16 sm:py-20 md:py-24 bg-[#09090b] overflow-hidden">
                 {/* Decorative Background */}
                 <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-                    <div className="absolute top-[20%] right-[-10%] w-[600px] h-[600px] bg-gradient-to-bl from-[#9cd4af]/10 to-transparent rounded-full blur-[100px]" />
-                    <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-gradient-to-tr from-[#75ccc3]/10 to-transparent rounded-full blur-[100px]" />
+                    <div className="absolute top-[20%] right-[-10%] w-[600px] h-[600px] bg-gradient-to-bl from-[#9cd4af]/10 via-[#75ccc3]/5 to-transparent rounded-full blur-[100px]" />
+                    <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-gradient-to-tr from-[#75ccc3]/10 via-[#d7e48a]/5 to-transparent rounded-full blur-[100px]" />
                 </div>
 
                 <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="mb-10 text-center">
-                        <h2 className="text-3xl sm:text-4xl font-black text-[#0B1120] mb-4">
+                        <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">
                             Contact Information
                         </h2>
-                        <p className="text-lg text-gray-600">
+                        <p className="text-lg text-gray-400">
                             Reach out to us through any of these channels. We're here to help.
                         </p>
                     </div>

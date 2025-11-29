@@ -11,7 +11,7 @@ import Navbar from '../components/Home/Navbar'
 
 const About = () => {
     return (
-        <div className='w-full'>
+        <div className='w-full bg-[#09090b] min-h-screen'>
             <Navbar />
             <AboutHero />
             <Stats />

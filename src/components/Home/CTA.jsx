@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 
 const CTA = () => {
     return (
-        <section className="py-24 bg-[#0B1120] relative overflow-hidden">
+        <section className="py-24 bg-[#09090b] relative overflow-hidden">
             {/* Background Glows */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#75ccc3]/10 rounded-full blur-[120px]" />

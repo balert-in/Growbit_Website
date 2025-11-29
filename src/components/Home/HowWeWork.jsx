@@ -34,7 +34,7 @@ const phases = [
 
 const HowWeWork = () => {
     return (
-        <section className="py-24 bg-white overflow-hidden">
+        <section className="py-24 bg-[#09090b] overflow-hidden">
             <div className="container mx-auto px-6">
 
                 {/* Header */}
@@ -45,14 +45,14 @@ const HowWeWork = () => {
                         transition={{ duration: 0.6 }}
                         className="inline-block mb-6 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#9cd4af]/10 to-[#75ccc3]/10 border border-[#9cd4af]/20 backdrop-blur-sm"
                     >
-                        <span className="text-sm font-bold text-[#0B1120] tracking-wide uppercase">How We Work</span>
+                        <span className="text-sm font-bold text-white tracking-wide uppercase">How We Work</span>
                     </motion.div>
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="text-4xl md:text-5xl font-bold text-[#0B1120] mb-6"
+                        className="text-4xl md:text-5xl font-bold text-white mb-6"
                     >
                         The Path to Success
                     </motion.h2>
@@ -61,7 +61,7 @@ const HowWeWork = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="text-gray-500 text-lg leading-relaxed"
+                        className="text-gray-400 text-lg leading-relaxed"
                     >
                         A proven four-step methodology that guarantees transparency and results at every stage of the journey.
                     </motion.p>
@@ -89,14 +89,14 @@ const HowWeWork = () => {
                                     }`}>
                                     <div className={`relative group text-center ${item.align === 'right' ? 'md:text-left' : 'md:text-right'
                                         }`}>
-                                        <span className={`absolute -top-12 text-[120px] leading-none font-black text-gray-200/60 select-none ${item.align === 'right' ? 'left-0 md:-left-4' : 'right-0 md:right-18'
+                                        <span className={`absolute -top-12 text-[120px] leading-none font-black text-gray-800/60 select-none ${item.align === 'right' ? 'left-0 md:-left-4' : 'right-0 md:right-18'
                                             }`}>
                                             {item.id}
                                         </span>
-                                        <h3 className="text-3xl font-bold text-[#0B1120] mb-4 relative z-10 pt-4">
+                                        <h3 className="text-3xl font-bold text-white mb-4 relative z-10 pt-4">
                                             {item.title}
                                         </h3>
-                                        <p className="text-gray-500 leading-relaxed relative z-10">
+                                        <p className="text-gray-400 leading-relaxed relative z-10">
                                             {item.description}
                                         </p>
                                     </div>
@@ -104,7 +104,7 @@ const HowWeWork = () => {
 
                                 {/* Center Marker */}
                                 <div className="relative z-10 flex items-center justify-center w-12 h-12 shrink-0">
-                                    <div className="w-4 h-4 bg-white rounded-full border-[4px] border-[#75ccc3] shadow-[0_0_0_4px_rgba(117,204,195,0.2)]" />
+                                    <div className="w-4 h-4 bg-[#09090b] rounded-full border-[4px] border-[#75ccc3] shadow-[0_0_0_4px_rgba(117,204,195,0.2)]" />
                                 </div>
 
                                 {/* Empty Space for alignment */}

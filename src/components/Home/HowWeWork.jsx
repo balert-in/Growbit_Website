@@ -1,31 +1,31 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import { useRef, useEffect } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import HandDrawnTitle from '../common/HandDrawnTitle'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const phases = [
     {
         id: 1,
-        phase: "PHASE 01",
         title: "Discover",
         description: "We analyze your current state, identify gaps in your market presence, and understand your core goals.",
         align: "left"
     },
     {
         id: 2,
-        phase: "PHASE 02",
         title: "Strategize",
         description: "A tailored roadmap is built to hit your KPIs with defined milestones, resource allocation, and timelines.",
         align: "right"
     },
     {
         id: 3,
-        phase: "PHASE 03",
         title: "Execute",
         description: "Our expert teams deploy solutions with agile precision, providing regular updates and rapid iteration.",
         align: "left"
     },
     {
         id: 4,
-        phase: "PHASE 04",
         title: "Optimize",
         description: "Continuous monitoring and tweaking for max ROI. We ensure the growth engine keeps running efficiently.",
         align: "right"
@@ -33,90 +33,197 @@ const phases = [
 ]
 
 const HowWeWork = () => {
-    return (
-        <section className="py-24 bg-[#09090b] overflow-hidden">
-            <div className="container mx-auto px-6">
+    const sectionRef = useRef(null)
+    const progressLineRef = useRef(null)
+    const mobileProgressRef = useRef(null)
+    const containerRef = useRef(null)
+    const cardsRef = useRef([])
 
-                {/* Header */}
-                <div className="text-center max-w-3xl mx-auto mb-20">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="inline-block mb-6 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#9cd4af]/10 to-[#75ccc3]/10 border border-[#9cd4af]/20 backdrop-blur-sm"
-                    >
-                        <span className="text-sm font-bold text-white tracking-wide uppercase">How We Work</span>
-                    </motion.div>
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.1 }}
-                        className="text-4xl md:text-5xl font-bold text-white mb-6"
-                    >
+    useEffect(() => {
+        const mm = gsap.matchMedia()
+
+        mm.add("(min-width: 768px)", () => {
+            if (progressLineRef.current) {
+                gsap.fromTo(
+                    progressLineRef.current,
+                    { height: '0%' },
+                    {
+                        height: '100%',
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: containerRef.current,
+                            start: 'top 80%',
+                            end: 'bottom 50%',
+                            scrub: 0.8,
+                        }
+                    }
+                )
+            }
+
+            cardsRef.current.forEach((card, index) => {
+                if (!card) return
+                const isLeft = phases[index].align === 'left'
+                gsap.fromTo(
+                    card,
+                    { opacity: 0, x: isLeft ? -60 : 60 },
+                    {
+                        opacity: 1,
+                        x: 0,
+                        duration: 0.6,
+                        ease: 'power2.out',
+                        scrollTrigger: {
+                            trigger: card,
+                            start: 'top 80%',
+                            toggleActions: 'play none none reverse',
+                        }
+                    }
+                )
+            })
+        })
+
+        mm.add("(max-width: 767px)", () => {
+            if (mobileProgressRef.current) {
+                gsap.fromTo(
+                    mobileProgressRef.current,
+                    { height: '0%' },
+                    {
+                        height: '100%',
+                        ease: 'none',
+                        scrollTrigger: {
+                            trigger: containerRef.current,
+                            start: 'top 85%',
+                            end: 'bottom 60%',
+                            scrub: 0.5,
+                        }
+                    }
+                )
+            }
+
+            cardsRef.current.forEach((card, index) => {
+                if (!card) return
+                gsap.fromTo(
+                    card,
+                    { opacity: 0, x: 30 },
+                    {
+                        opacity: 1,
+                        x: 0,
+                        duration: 0.5,
+                        ease: 'power2.out',
+                        scrollTrigger: {
+                            trigger: card,
+                            start: 'top 88%',
+                            toggleActions: 'play none none reverse'
+                        }
+                    }
+                )
+            })
+        })
+
+        return () => mm.revert()
+    }, [])
+
+    return (
+        <section ref={sectionRef} className="py-16 lg:py-24 bg-[#09090b] overflow-hidden">
+            <div className="container mx-auto px-4 sm:px-6">
+                <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
+                    <HandDrawnTitle text="How We Work" />
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
                         The Path to Success
-                    </motion.h2>
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                        className="text-gray-400 text-lg leading-relaxed"
-                    >
-                        A proven four-step methodology that guarantees transparency and results at every stage of the journey.
-                    </motion.p>
+                    </h2>
+                    <p className="text-gray-400 text-sm sm:text-base md:text-lg leading-relaxed">
+                        A proven four-step methodology that guarantees transparency and results at every stage.
+                    </p>
                 </div>
 
-                {/* Timeline */}
-                <div className="relative max-w-5xl mx-auto">
+                <div ref={containerRef} className="relative max-w-4xl mx-auto">
+                    <div className="absolute left-1/2 -translate-x-1/2 top-0 h-full w-[3px] hidden md:block">
+                        <div className="absolute inset-0 bg-gray-800 rounded-full" />
+                        <div
+                            ref={progressLineRef}
+                            className="absolute top-0 left-0 w-full rounded-full"
+                            style={{
+                                background: 'linear-gradient(to bottom, #75ccc3, #d7e48a, #75ccc3)',
+                                height: '0%'
+                            }}
+                        />
+                    </div>
 
-                    {/* Central Line */}
-                    <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-[2px] bg-gradient-to-b from-[#75ccc3]/20 via-[#75ccc3] to-[#d7e48a]/20 hidden md:block" />
-
-                    <div className="space-y-12 md:space-y-24 relative">
+                    <div className="hidden md:block space-y-16 relative">
                         {phases.map((item, index) => (
-                            <motion.div
+                            <div
                                 key={item.id}
-                                initial={{ opacity: 0, y: 80 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, amount: 0.5 }}
-                                transition={{ duration: 0.7, ease: "easeOut" }}
-                                className={`flex flex-col md:flex-row items-center gap-8 md:gap-0 ${item.align === 'right' ? 'md:flex-row-reverse' : ''
-                                    }`}
+                                ref={el => cardsRef.current[index] = el}
+                                className={`flex flex-row items-center gap-8 ${item.align === 'right' ? 'flex-row-reverse' : ''}`}
                             >
-                                {/* Content Card */}
-                                <div className={`w-full md:w-1/2 ${item.align === 'right' ? 'md:pl-16' : 'md:pr-16'
-                                    }`}>
-                                    <div className={`relative group text-center ${item.align === 'right' ? 'md:text-left' : 'md:text-right'
-                                        }`}>
-                                        <span className={`absolute -top-12 text-[120px] leading-none font-black text-gray-800/60 select-none ${item.align === 'right' ? 'left-0 md:-left-4' : 'right-0 md:right-18'
-                                            }`}>
+                                <div className={`w-[calc(50%-2rem)] ${item.align === 'right' ? 'text-left' : 'text-right'}`}>
+                                    <div className="relative">
+                                        <span className={`absolute -top-8 text-8xl font-black text-gray-800/40 select-none ${item.align === 'right' ? 'left-0' : 'right-0'}`}>
                                             {item.id}
                                         </span>
-                                        <h3 className="text-3xl font-bold text-white mb-4 relative z-10 pt-4">
+                                        <h3 className="text-3xl font-bold text-white mb-3 relative z-10 pt-2">
                                             {item.title}
                                         </h3>
-                                        <p className="text-gray-400 leading-relaxed relative z-10">
+                                        <p className="text-base text-gray-400 leading-relaxed relative z-10">
                                             {item.description}
                                         </p>
                                     </div>
                                 </div>
 
-                                {/* Center Marker */}
-                                <div className="relative z-10 flex items-center justify-center w-12 h-12 shrink-0">
-                                    <div className="w-4 h-4 bg-[#09090b] rounded-full border-[4px] border-[#75ccc3] shadow-[0_0_0_4px_rgba(117,204,195,0.2)]" />
+                                <div className="relative z-10 flex items-center justify-center w-10 h-10 shrink-0">
+                                    <div className="w-5 h-5 bg-gradient-to-br from-[#75ccc3] to-[#d7e48a] rounded-full shadow-lg shadow-[#75ccc3]/40" />
                                 </div>
 
-                                {/* Empty Space for alignment */}
-                                <div className="w-full md:w-1/2 hidden md:block" />
-                            </motion.div>
+                                <div className="w-[calc(50%-2rem)]" />
+                            </div>
                         ))}
                     </div>
-                </div>
 
+                    <div className="md:hidden relative pl-12">
+                        <div className="absolute left-[18px] top-2 bottom-2 w-[2px]">
+                            <div className="absolute inset-0 bg-gray-800 rounded-full" />
+                            <div
+                                ref={mobileProgressRef}
+                                className="absolute top-0 left-0 w-full rounded-full"
+                                style={{
+                                    background: 'linear-gradient(to bottom, #75ccc3, #d7e48a, #75ccc3)',
+                                    height: '0%'
+                                }}
+                            />
+                        </div>
+
+                        <div className="space-y-6">
+                            {phases.map((item, index) => (
+                                <div
+                                    key={item.id}
+                                    ref={el => { if (typeof window !== 'undefined' && window.innerWidth < 768) cardsRef.current[index] = el }}
+                                    className="relative"
+                                >
+                                    <div className="absolute -left-12 top-0 w-10 h-10 flex items-center justify-center">
+                                        <div className="relative">
+                                            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#75ccc3] to-[#d7e48a] flex items-center justify-center shadow-lg shadow-[#75ccc3]/30">
+                                                <span className="text-sm font-bold text-[#09090b]">{item.id}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="bg-gray-900/50 backdrop-blur-sm rounded-xl p-5 border border-gray-800/50">
+                                        <h3 className="text-lg font-bold text-white mb-2">
+                                            {item.title}
+                                        </h3>
+                                        <p className="text-sm text-gray-400 leading-relaxed">
+                                            {item.description}
+                                        </p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     )
 }
 
 export default HowWeWork
+
+

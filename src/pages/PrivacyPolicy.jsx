@@ -1,5 +1,6 @@
-import { privacyContent } from "../utils/privacyContent";
 import ScrollSpyLayout from "../components/ScrollSpyLayout";
+import { privacyContent } from "../constants/privacyContent";
+
 
 const PrivacyPolicy = () => {
   return (

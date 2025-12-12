@@ -1,5 +1,6 @@
-import { termsContent } from "../utils/termsContent";
 import ScrollSpyLayout from "../components/ScrollSpyLayout";
+import { termsContent } from "../constants/termsContent";
+
 
 const TermsAndConditions = () => {
   return (

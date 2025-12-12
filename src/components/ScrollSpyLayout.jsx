@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import { ScrollSpy } from "./ScrollSpy";
+import { ScrollSpy } from "./common/ScrollSpy";
 
 const ScrollSpyLayout = ({
   data,
@@ -34,17 +34,24 @@ const ScrollSpyLayout = ({
   const Navigation = ({ className = "" }) => (
     <nav className={`space-y-3 ${className}`}>
       {data.map(({ id, title, icon: Icon }) => (
-        <button
+        <motion.button
           key={id}
           onClick={() => handleSectionClick(id)}
-          className={`cursor-pointer w-full flex items-center gap-3 rounded-xl text-left transition-all ${activeSection === id
-              ? " text-[#9cd4af]"
-              : "text-gray-600"
-            }`}
+          className="cursor-pointer w-full flex items-center gap-3 rounded-xl text-left group"
+          whileHover={{ x: 5 }}
+          transition={{ type: "spring", stiffness: 300 }}
         >
-          <Icon className="w-4 h-4 flex-shrink-0" />
-          <span className="text-sm font-medium truncate">{title}</span>
-        </button>
+          <Icon className={`size-4 flex-shrink-0 ${activeSection === id ? "text-[#9cd4af]" : "text-gray-400"} group-hover:text-[#9cd4af] transition-colors`} />
+          <span className={`text-sm font-medium truncate relative inline-block ${activeSection === id ? "text-[#9cd4af]" : "text-gray-400"} group-hover:text-[#9cd4af] transition-colors`}>
+            {title}
+            <motion.span
+              className="absolute left-0 bottom-0 h-[2px] bg-gradient-to-r from-[#9cd4af] via-[#75ccc3] to-[#d7e48a]"
+              initial={{ width: 0 }}
+              whileHover={{ width: "100%" }}
+              transition={{ duration: 0.3 }}
+            />
+          </span>
+        </motion.button>
       ))}
     </nav>
   );
@@ -54,7 +61,7 @@ const ScrollSpyLayout = ({
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50 relative">
+    <div className="min-h-screen bg-[#09090b] relative">
       <ScrollSpy handleScroll={handleScroll} />
 
       <motion.div
@@ -69,14 +76,14 @@ const ScrollSpyLayout = ({
       />
 
       <div className="pt-20 relative z-10">
-        <div className="bg-gradient-to-r from-black to-gray-800 text-center relative overflow-hidden">
+        <div className="bg-gradient-to-r from-[#18181b] to-[#09090b] text-center relative overflow-hidden border-b border-gray-800">
           <motion.div
-            className="absolute bg-[#75ccc3] opacity-10 rounded-full w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 left-4 top-8"
+            className="absolute bg-[#75ccc3]/10 rounded-full w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 left-4 top-8 blur-3xl"
             animate={{ y: [-10, 10, -10] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           />
           <motion.div
-            className="absolute bg-[#d7e48a] opacity-10 rounded-full w-20 h-20 sm:w-28 sm:h-28 right-4 top-16"
+            className="absolute bg-[#d7e48a]/10 rounded-full w-20 h-20 sm:w-28 sm:h-28 right-4 top-16 blur-3xl"
             animate={{ y: [10, -10, 10] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
           />
@@ -92,7 +99,7 @@ const ScrollSpyLayout = ({
                 <span className="text-white">{title} </span>
                 <span className="text-[#9cd4af]">{titleHighlight}</span>
               </h1>
-              <p className="text-base md:text-lg text-gray-300">
+              <p className="text-base md:text-lg text-gray-400">
                 {subtitle}
               </p>
             </motion.div>
@@ -111,7 +118,7 @@ const ScrollSpyLayout = ({
               <div className="relative">
                 <button
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                  className="cursor-pointer w-full flex items-center justify-between gap-2 p-4 bg-white/80 backdrop-blur-sm rounded-md border border-gray-200 shadow-md"
+                  className="cursor-pointer w-full flex items-center justify-between gap-2 p-4 bg-[#18181b]/80 backdrop-blur-sm rounded-md border border-gray-800 shadow-md"
                 >
                   <div className="flex items-center gap-3">
                     {(() => {
@@ -121,7 +128,7 @@ const ScrollSpyLayout = ({
                         Icon && (
                           <>
                             <Icon className="w-4 h-4 text-[#9cd4af]" />
-                            <span className="font-medium text-gray-800">
+                            <span className="font-medium text-white">
                               {currentSection.title}
                             </span>
                           </>
@@ -130,7 +137,7 @@ const ScrollSpyLayout = ({
                     })()}
                   </div>
                   <ChevronDown
-                    className={`w-5 h-5 text-gray-600 transition-transform ${isDropdownOpen ? "rotate-180" : ""
+                    className={`w-5 h-5 text-gray-400 transition-transform ${isDropdownOpen ? "rotate-180" : ""
                       }`}
                   />
                 </button>
@@ -141,7 +148,7 @@ const ScrollSpyLayout = ({
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
-                      className="absolute z-20 top-full left-0 right-0 mt-2 bg-white/80 backdrop-blur-sm rounded-2xl p-2 shadow-lg border border-gray-200"
+                      className="absolute z-20 top-full left-0 right-0 mt-2 bg-[#18181b]/95 backdrop-blur-sm rounded-2xl p-2 shadow-lg border border-gray-800"
                     >
                       <Navigation />
                     </motion.div>
@@ -161,17 +168,17 @@ const ScrollSpyLayout = ({
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.3 }}
-                      className={`py-6 md:py-0 space-y-3 ${index !== data.length - 1 ? 'border-b border-gray-200' : ''}`}
+                      className={`py-6 md:py-0 space-y-3 ${index !== data.length - 1 ? 'border-b border-gray-800' : ''}`}
                     >
                       <div className="flex items-start gap-4 mb-6 pt-3">
                         <div className={`p-2 bg-gradient-to-r ${gradientFrom} ${gradientTo} rounded-xl flex-shrink-0`}>
                           <Icon className="size-5 text-white" />
                         </div>
                         <div className="flex-1">
-                          <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                          <h2 className="text-2xl font-bold text-white mb-4">
                             {title}
                           </h2>
-                          <div className="prose prose-gray max-w-none text-gray-700 leading-relaxed">
+                          <div className="prose prose-invert max-w-none text-gray-300 leading-relaxed">
                             <div className="whitespace-pre-wrap text-sm md:text-base">
                               {content}
                             </div>

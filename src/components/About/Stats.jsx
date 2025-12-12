@@ -52,12 +52,12 @@ const Stats = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="py-12 px-6 text-center group hover:bg-white/5 transition-colors duration-300"
+                            className="py-8 sm:py-10 md:py-12 px-4 sm:px-6 text-center group hover:bg-white/5 transition-colors duration-300"
                         >
-                            <div className="text-5xl sm:text-6xl font-bold text-white mb-3 tracking-tight group-hover:scale-105 transition-transform duration-300">
+                            <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-2 sm:mb-3 tracking-tight group-hover:scale-105 transition-transform duration-300">
                                 <Counter value={stat.value} />
                             </div>
-                            <div className="text-sm font-bold text-gray-400 uppercase tracking-widest">
+                            <div className="text-xs sm:text-sm font-bold text-gray-400 uppercase tracking-widest">
                                 {stat.label}
                             </div>
                         </motion.div>

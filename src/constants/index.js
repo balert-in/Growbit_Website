@@ -55,13 +55,14 @@ export const INITIAL_FEATURES = [
 
 export const FOOTER_DATA = {
     company: {
-        logo: '/logo.webp',
+        logo: '/logo-light.webp',
         description: 'Empowering businesses with technology, talent, and strategy. Your partner in sustainable growth.',
     },
     social: [
-        { name: 'Twitter', icon: 'Twitter', url: '#' },
-        { name: 'LinkedIn', icon: 'Linkedin', url: '#' },
-        { name: 'Instagram', icon: 'Instagram', url: '#' }
+        { name: 'Facebook', icon: 'Facebook', url: 'https://www.facebook.com/growbit.in/' },
+        { name: 'YouTube', icon: 'Youtube', url: 'https://www.youtube.com/@growbit' },
+        { name: 'Instagram', icon: 'Instagram', url: 'https://www.instagram.com/growbit.in/?hl=en' },
+        { name: 'LinkedIn', icon: 'Linkedin', url: 'https://www.linkedin.com/company/thegrowbit' }
     ],
     sections: [
         {
@@ -75,10 +76,8 @@ export const FOOTER_DATA = {
         {
             title: 'Company',
             links: [
-                { label: 'About Us', url: '#' },
-                { label: 'Careers', url: '#' },
-                { label: 'Blog', url: '#' },
-                { label: 'Privacy Policy', url: '#' }
+                { label: 'Terms & Condition', url: '/TermsAndConditions' },
+                { label: 'Privacy Policy', url: '/PrivacyPolicy' }
             ]
         },
         {

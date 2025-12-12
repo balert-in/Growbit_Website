@@ -5,7 +5,7 @@ export const FeatureCard = ({ feature, index }) => {
     const containerRef = useRef(null);
     const [scale, setScale] = useState(1);
 
-    const topOffset = 100 + (index * 40);
+    const topOffset = 100 + (index * 20);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -32,7 +32,7 @@ export const FeatureCard = ({ feature, index }) => {
     return (
         <div
             ref={containerRef}
-            className="sticky w-full max-w-7xl mx-auto mb-16 sm:mb-20 md:mb-24 px-4 sm:px-6 lg:px-8"
+            className="sticky w-full max-w-7xl mx-auto mb-20 sm:mb-32 md:mb-48 lg:mb-24 px-3 sm:px-4 md:px-6 lg:px-8"
             style={{
                 top: `${topOffset}px`,
                 zIndex: index + 10
@@ -42,66 +42,68 @@ export const FeatureCard = ({ feature, index }) => {
                 className="relative will-change-transform origin-top transition-transform duration-100 ease-linear"
                 style={{
                     transform: `scale(${scale})`,
-                    filter: `brightness(${Math.max(0.92, scale)})`
+                    filter: `brightness(${Math.max(0.95, scale)})`
                 }}
             >
                 <div
-                    className="relative overflow-hidden rounded-2xl sm:rounded-3xl lg:rounded-[1.5rem] bg-[#18181b] border border-gray-800 shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
+                    className="relative overflow-hidden rounded-xl sm:rounded-2xl lg:rounded-3xl bg-white border border-gray-100 shadow-2xl shadow-[#75ccc3]/10"
                 >
                     <div
-                        className="absolute top-0 right-0 w-[400px] sm:w-[600px] lg:w-[800px] h-[400px] sm:h-[600px] lg:h-[800px] rounded-full blur-[80px] sm:blur-[100px] lg:blur-[120px] opacity-10 pointer-events-none"
+                        className="absolute top-0 right-0 w-[300px] sm:w-[500px] lg:w-[700px] h-[300px] sm:h-[500px] lg:h-[700px] rounded-full blur-[60px] sm:blur-[90px] lg:blur-[120px] opacity-20 pointer-events-none"
                         style={{ background: feature.themeColor }}
                     />
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[500px] sm:min-h-[550px]">
+                    <div className="flex flex-col lg:grid lg:grid-cols-2">
 
-                        <div className="p-6 sm:p-8 md:p-12 lg:p-16 xl:p-20 flex flex-col justify-center relative z-10 order-2 lg:order-1">
+                        <div className="p-5 sm:p-6 md:p-8 lg:p-10 xl:p-14 flex flex-col justify-center relative z-10 order-2 lg:order-1">
 
-                            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white mb-4 sm:mb-5 lg:mb-6 leading-tight tracking-tight">
+                            <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-gray-900 mb-2.5 sm:mb-3 md:mb-3.5 lg:mb-5 leading-tight tracking-tight">
                                 {feature.title}
                             </h3>
 
-                            <p className="text-sm sm:text-base lg:text-md text-gray-400 mb-6 sm:mb-8 lg:mb-10 leading-relaxed font-medium max-w-md">
+                            <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 mb-4 sm:mb-5 md:mb-5 lg:mb-8 leading-relaxed font-medium">
                                 {feature.description}
                             </p>
 
-                            <div className="space-y-3 sm:space-y-4">
+                            <div className="space-y-2 sm:space-y-2.5 md:space-y-2.5 lg:space-y-4">
                                 {feature.keyPoints.map((point, i) => (
-                                    <div key={i} className="flex items-start gap-2 sm:gap-3">
+                                    <div key={i} className="flex items-start gap-2 sm:gap-2.5 md:gap-3">
                                         <div
-                                            className="mt-0.5 sm:mt-1 size-5 sm:size-6 rounded-full flex items-center justify-center flex-shrink-0"
-                                            style={{ backgroundColor: `${feature.themeColor}40` }}
+                                            className="mt-0.5 size-4 sm:size-5 md:size-5 rounded-full flex items-center justify-center flex-shrink-0"
+                                            style={{ backgroundColor: `${feature.themeColor}` }}
                                         >
                                             <Check
-                                                className="size-2.5 sm:size-3 stroke-[3]"
+                                                className="size-2.5 sm:size-3 md:size-3 stroke-[3]"
                                                 style={{ color: '#09090b' }}
                                             />
                                         </div>
-                                        <span className="text-sm sm:text-base text-gray-300 font-medium">{point}</span>
+                                        <span className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-700 font-medium leading-snug">{point}</span>
                                     </div>
                                 ))}
                             </div>
                         </div>
 
-                        <div className="relative min-h-[300px] sm:min-h-[350px] lg:min-h-auto overflow-hidden bg-[#09090b] lg:bg-transparent flex items-center justify-center p-6 sm:p-8 order-1 lg:order-2">
-
+                        <div className="relative h-[200px] sm:h-[220px] md:h-[200px] lg:h-[550px] xl:h-[600px] overflow-hidden order-1 lg:order-2">
                             <div
-                                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4/5 h-4/5 rounded-full blur-[60px] sm:blur-[80px] opacity-30 sm:opacity-40"
-                                style={{ background: feature.themeColor }}
-                            ></div>
-
-                            <div className="relative w-full h-full max-h-[280px] sm:max-h-[400px] lg:max-h-[500px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl sm:shadow-2xl transform lg:translate-x-6 xl:translate-x-10 lg:translate-y-6 xl:translate-y-10 transition-transform duration-700 hover:scale-[1.02]">
-                                <img
-                                    src={feature.imageUrl}
-                                    alt={feature.title}
-                                    className="w-full h-full object-cover"
-                                />
+                                className="absolute inset-0 flex items-center justify-center pointer-events-none z-0"
+                            >
+                                <div
+                                    className="w-2/3 h-2/3 rounded-full blur-[60px] sm:blur-[80px] opacity-30"
+                                    style={{ background: feature.themeColor }}
+                                ></div>
                             </div>
 
+                            <img
+                                src={feature.imageUrl}
+                                alt={feature.title}
+                                className="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105"
+                            />
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
     );
 };
+

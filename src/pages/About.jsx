@@ -2,12 +2,10 @@ import React from 'react'
 import AboutHero from '../components/About/AboutHero'
 import Stats from '../components/About/Stats'
 import Journey from '../components/About/Journey'
-import Timeline from '../components/About/Timeline'
+import Timeline2 from '../components/About/Timeline2'
 import CEONote from '../components/About/CEONote'
 import CTA from '../components/Home/CTA'
-import Footer from '../components/Home/Footer'
-import FooterTagline from '../components/Home/FooterTagline'
-import Navbar from '../components/Home/Navbar'
+import Navbar from '../components/common/Navbar'
 
 const About = () => {
     return (
@@ -16,7 +14,7 @@ const About = () => {
             <AboutHero />
             <Stats />
             <Journey />
-            <Timeline />
+            <Timeline2 />
             <CEONote />
             <CTA />
         </div>

@@ -24,7 +24,6 @@ const ContactInfo = () => {
             title: "Email us",
             content: FOOTER_DATA.sections[2].links[0].label,
             href: FOOTER_DATA.sections[2].links[0].url,
-            // subtext: "support@growbit.com"
         },
         {
             icon: Phone,
@@ -51,40 +50,40 @@ const ContactInfo = () => {
             ref={divRef}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className="bg-[#18181b] rounded-3xl p-8 text-white h-full flex flex-col justify-between relative overflow-hidden border border-gray-800 group"
+            className="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 h-full flex flex-col justify-between relative overflow-hidden border border-gray-100 shadow-xl shadow-[#75ccc3]/10 group"
         >
             <div
                 className="pointer-events-none absolute -inset-px transition duration-300 z-0"
                 style={{
                     opacity,
-                    background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(156, 212, 175, 0.1), transparent 40%)`,
+                    background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(117, 204, 195, 0.15), transparent 40%)`,
                 }}
             />
             <div className="relative z-10">
-                <h3 className="text-xl sm:text-2xl font-bold mb-8">Contact Information</h3>
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-6 sm:mb-7 md:mb-8 text-gray-900">Contact Information</h3>
 
-                <div className="space-y-5 relative z-10">
+                <div className="space-y-4 sm:space-y-5 relative z-10">
                     {contactDetails.map((detail, index) => (
-                        <div key={index} className="flex items-start gap-4">
-                            <div className="p-2.5 rounded-lg bg-white/5 backdrop-blur-sm shrink-0 border border-white/10">
-                                <detail.icon className="w-5 h-5 text-[#75ccc3]" />
+                        <div key={index} className="flex items-start gap-3 sm:gap-4">
+                            <div className="p-2 sm:p-2.5 rounded-lg bg-gradient-to-br from-[#75ccc3]/10 to-[#d7e48a]/10 shrink-0 border border-[#75ccc3]/20">
+                                <detail.icon className="w-4 sm:w-5 h-4 sm:h-5 text-[#75ccc3]" />
                             </div>
                             <div>
-                                <p className="text-gray-400 text-xs font-medium mb-0.5 uppercase tracking-wide">{detail.title}</p>
+                                <p className="text-gray-500 text-[10px] sm:text-xs font-medium mb-0.5 uppercase tracking-wide">{detail.title}</p>
                                 {detail.href ? (
                                     <a
                                         href={detail.href}
-                                        className="text-base font-semibold hover:text-[#75ccc3] transition-colors block text-gray-200"
+                                        className="text-sm sm:text-base font-semibold hover:text-[#75ccc3] transition-colors block text-gray-800"
                                     >
                                         {detail.content}
                                     </a>
                                 ) : (
-                                    <p className="text-base font-semibold whitespace-pre-line leading-relaxed text-gray-200">
+                                    <p className="text-sm sm:text-base font-semibold whitespace-pre-line leading-relaxed text-gray-800">
                                         {detail.content}
                                     </p>
                                 )}
                                 {detail.subtext && (
-                                    <p className="text-xs text-gray-400 mt-0.5">{detail.subtext}</p>
+                                    <p className="text-[10px] sm:text-xs text-gray-500 mt-0.5">{detail.subtext}</p>
                                 )}
                             </div>
                         </div>
@@ -92,21 +91,22 @@ const ContactInfo = () => {
                 </div>
             </div>
 
-            <div className="mt-10 relative h-64 rounded-xl overflow-hidden border border-gray-800 shadow-inner z-10">
+            <div className="mt-6 sm:mt-8 md:mt-10 relative h-48 sm:h-56 md:h-64 rounded-xl overflow-hidden border border-gray-200 shadow-inner z-10">
                 <iframe
                     title="GrowBit Office Location"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.964858807839!2d78.4992085!3d17.4555086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9bf604a7d579:0x45423566396cc91f!2sGrowBit%20Business%20Services%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1718030000000!5m2!1sen!2sin"
-                    className="w-full h-full border-0 grayscale hover:grayscale-0 transition-all duration-700"
+                    className="w-full h-full border-0 grayscale-[30%] hover:grayscale-0 transition-all duration-700"
                     allowFullScreen=""
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                 />
             </div>
 
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#9cd4af]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#75ccc3]/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#9cd4af]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#75ccc3]/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none" />
         </motion.div>
     )
 }
 
 export default ContactInfo
+

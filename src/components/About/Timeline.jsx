@@ -1,50 +1,26 @@
-import React, { useRef, useState } from 'react'
+import React from 'react'
 import { motion } from 'framer-motion'
 import { Car } from 'lucide-react'
 import { ABOUT_DATA } from '../../constants'
+import { FlashlightCard } from '../common/FlashlightCard'
+
+import HandDrawnTitle from '../common/HandDrawnTitle'
 
 const TimelineCard = ({ item }) => {
-    const divRef = useRef(null);
-    const [position, setPosition] = useState({ x: 0, y: 0 });
-    const [opacity, setOpacity] = useState(0);
-
-    const handleMouseMove = (e) => {
-        if (!divRef.current) return;
-        const rect = divRef.current.getBoundingClientRect();
-        setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-        setOpacity(1);
-    };
-
-    const handleMouseLeave = () => {
-        setOpacity(0);
-    };
-
     return (
-        <div
-            ref={divRef}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            className="relative z-10 bg-[#18181b]/80 backdrop-blur-sm p-6 rounded-2xl border border-gray-800 shadow-sm hover:shadow-md transition-all group overflow-hidden"
-        >
-            <div
-                className="pointer-events-none absolute -inset-px transition duration-300"
-                style={{
-                    opacity,
-                    background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(156, 212, 175, 0.15), transparent 40%)`,
-                }}
-            />
-            <h3 className="text-2xl sm:text-3xl font-black text-white mb-3 relative z-10">
+        <FlashlightCard className="z-10 bg-[#18181b]/80 backdrop-blur-sm p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl border border-gray-800 shadow-sm hover:shadow-md transition-all group text-center md:text-left">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-white mb-2 sm:mb-3 relative z-10">
                 {item.title}
             </h3>
-            <p className="text-base sm:text-lg text-gray-400 leading-relaxed mb-4 relative z-10">
+            <p className="text-sm sm:text-base md:text-lg text-gray-400 leading-relaxed mb-3 sm:mb-4 relative z-10">
                 {item.description}
             </p>
-            <div className="relative h-16 sm:h-20 overflow-hidden z-10">
-                <span className="absolute bottom-0 left-0 text-6xl sm:text-7xl md:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-b from-gray-800 to-gray-900 opacity-30 leading-none select-none transform translate-y-2 group-hover:opacity-50 transition-opacity">
+            <div className="relative h-12 sm:h-16 md:h-20 overflow-hidden z-10">
+                <span className="absolute bottom-0 left-0 text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-b from-accent-1 via-gray-500 to-transparent opacity-30 leading-none select-none transform translate-y-2 group-hover:opacity-80 transition-opacity">
                     {item.year}
                 </span>
             </div>
-        </div>
+        </FlashlightCard>
     );
 };
 
@@ -58,13 +34,14 @@ const Timeline = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
-                    className="text-center mb-16 sm:mb-20"
+                    className="text-center mb-12 sm:mb-16 md:mb-20"
                 >
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4">
+                    <HandDrawnTitle text="Milestones" />
+                    <h2 className="section-heading mb-4 sm:mb-5 md:mb-6">
                         The Road Traveled
                     </h2>
-                    <p className="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto">
-                        A direct path from our humble beginnings to our future vision.
+                    <p className="section-subheading">
+                        Every milestone tells a story of innovation, growth, and relentless pursuit of excellence as we continue building the future.
                     </p>
                 </motion.div>
 
@@ -97,7 +74,7 @@ const Timeline = () => {
                         <div className="absolute inset-0 bg-gradient-to-b from-[#09090b] via-transparent to-[#09090b] opacity-50" />
                     </div>
 
-                    <div className="space-y-24 relative z-10">
+                    <div className="space-y-12 sm:space-y-16 md:space-y-20 lg:space-y-24 relative z-10">
                         {ABOUT_DATA.timeline.map((item, index) => (
                             <motion.div
                                 key={index}
@@ -109,7 +86,7 @@ const Timeline = () => {
                             >
                                 <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-24 items-center ${item.side === 'left' ? '' : 'md:grid-flow-dense'
                                     }`}>
-                                    <div className={`${item.side === 'right' ? 'md:col-start-2' : ''} relative text-center md:text-left`}>
+                                    <div className={`${item.side === 'right' ? 'md:col-start-2' : ''} relative`}>
                                         <TimelineCard item={item} />
                                     </div>
 

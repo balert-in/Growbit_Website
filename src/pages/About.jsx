@@ -4,6 +4,7 @@ import Stats from '../components/About/Stats'
 import Journey from '../components/About/Journey'
 import Timeline2 from '../components/About/Timeline2'
 import CEONote from '../components/About/CEONote'
+import OurClients from '../components/About/OurClients'
 import CTA from '../components/Home/CTA'
 import Navbar from '../components/common/Navbar'
 
@@ -16,6 +17,7 @@ const About = () => {
             <Journey />
             <Timeline2 />
             <CEONote />
+            <OurClients />
             <CTA />
         </div>
     )

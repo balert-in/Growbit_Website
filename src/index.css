@@ -81,7 +81,7 @@ html,body{
 }
 
 .section-subheading {
-  @apply mt-4 sm:mt-5 md:mt-6 text-sm sm:text-base md:text-lg text-gray-400 max-w-2xl mx-auto px-4 leading-relaxed;
+  @apply mt-4 sm:mt-5 md:mt-6 text-sm sm:text-base md:text-lg text-gray-400 max-w-2xl mx-auto px-4 leading-relaxed text-center;
 }
 
 /* Arrow Slide Animation */

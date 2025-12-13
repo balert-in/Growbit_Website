@@ -1,6 +1,7 @@
 import React from 'react'
 import Hero from '../components/Home/Hero'
 import Features from '../components/Home/Features'
+import WhyGrowbit from '../components/Home/WhyGrowbit'
 import HowWeWork from '../components/Home/HowWeWork'
 import Testimonials from '../components/Home/Testimonials'
 import AppShowcase from '../components/Home/AppShowcase'
@@ -13,6 +14,7 @@ const Home = () => {
             <Navbar />
             <Hero />
             <Features />
+            <WhyGrowbit />
             <HowWeWork />
             <Testimonials />
             <AppShowcase />

@@ -36,6 +36,7 @@ const Footer = () => {
                                     <motion.a
                                         key={social.name}
                                         href={social.url}
+                                        target="_blank"
                                         aria-label={social.name}
                                         whileHover={{ scale: 1.1, rotate: 5 }}
                                         whileTap={{ scale: 0.95 }}

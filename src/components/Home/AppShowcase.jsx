@@ -318,15 +318,15 @@ const AppShowcase = () => {
                             ref={titleRef}
                             className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6 tracking-tight"
                         >
-                            Manage Your Growth <br />
-                            <span className="bg-gradient-to-r from-[#75ccc3] to-[#d7e48a] bg-clip-text text-transparent">Anytime, Anywhere</span>
+                            Your Field Operations <br />
+                            <span className="bg-gradient-to-r from-[#75ccc3] to-[#d7e48a] bg-clip-text text-transparent">In Your Pocket</span>
                         </h2>
 
                         <p
                             ref={descRef}
                             className="text-base sm:text-lg text-gray-400 mb-8 sm:mb-10 leading-relaxed max-w-xl mx-auto lg:mx-0"
                         >
-                            Download the Growbit app to track your revenue, manage your team, and stay ahead of the competition right from your pocket.
+                            Track field tasks, monitor your team in real-time, and get instant updates from the ground — all from the GrowBit app. Complete visibility, zero guesswork.
                         </p>
 
                         <div

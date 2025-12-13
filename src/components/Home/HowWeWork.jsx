@@ -8,26 +8,26 @@ gsap.registerPlugin(ScrollTrigger)
 const phases = [
     {
         id: 1,
-        title: "Discover",
-        description: "We analyze your current state, identify gaps in your market presence, and understand your core goals.",
+        title: "Scope",
+        description: "We start by understanding your goals — target regions, customer segments, and what success looks like for you.",
         align: "left"
     },
     {
         id: 2,
-        title: "Strategize",
-        description: "A tailored roadmap is built to hit your KPIs with defined milestones, resource allocation, and timelines.",
+        title: "Deploy",
+        description: "Our verified field teams hit the ground running. We handle recruitment, training, and logistics so you don't have to.",
         align: "right"
     },
     {
         id: 3,
-        title: "Execute",
-        description: "Our expert teams deploy solutions with agile precision, providing regular updates and rapid iteration.",
+        title: "Track",
+        description: "Every task is geo-tagged and monitored in real-time. You get live dashboards, instant updates, and complete visibility.",
         align: "left"
     },
     {
         id: 4,
-        title: "Optimize",
-        description: "Continuous monitoring and tweaking for max ROI. We ensure the growth engine keeps running efficiently.",
+        title: "Scale",
+        description: "Once the model works, we scale fast. Add more agents, enter new territories, or expand scope — all with performance accountability.",
         align: "right"
     }
 ]
@@ -128,10 +128,10 @@ const HowWeWork = () => {
                 <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
                     <HandDrawnTitle text="How We Work" />
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
-                        The Path to Success
+                        From Plan to Ground
                     </h2>
                     <p className="text-gray-400 text-sm sm:text-base md:text-lg leading-relaxed">
-                        A proven four-step methodology that guarantees transparency and results at every stage.
+                        A straightforward process that takes your requirements and turns them into real-world execution — with tracking at every step.
                     </p>
                 </div>
 

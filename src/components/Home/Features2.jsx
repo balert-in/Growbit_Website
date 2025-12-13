@@ -57,7 +57,7 @@ export const FeatureCard = ({ feature, index }) => {
 
                         <div className="p-5 sm:p-6 md:p-8 lg:p-10 xl:p-14 flex flex-col justify-center relative z-10 order-2 lg:order-1">
 
-                            <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold text-gray-900 mb-2.5 sm:mb-3 md:mb-3.5 lg:mb-5 leading-tight tracking-tight">
+                            <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-2.5 sm:mb-3 md:mb-3.5 lg:mb-5 leading-tight tracking-tight">
                                 {feature.title}
                             </h3>
 

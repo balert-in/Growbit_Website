@@ -41,7 +41,7 @@ const AboutHero = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.4 }}
-                        className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-400 leading-relaxed font-medium max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12 px-4"
+                        className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-400 leading-relaxed font-medium max-w-5xl mx-auto mb-8 sm:mb-10 md:mb-12 px-4"
                     >
                         {ABOUT_DATA.hero.subtitle}
                     </motion.p>

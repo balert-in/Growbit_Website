@@ -102,12 +102,12 @@ const Hero = () => {
                         </div>
 
                         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-4 sm:mb-6 tracking-tight text-white">
-                            Accelerate <br />
-                            Business <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#75ccc3] to-[#d7e48a]">Growth</span>
+                            On-Ground <br />
+                            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#75ccc3] to-[#d7e48a]">Execution at Scale</span>
                         </h1>
 
                         <p className="text-base sm:text-lg md:text-xl text-gray-400 mb-8 sm:mb-10 leading-relaxed max-w-lg">
-                            Growbit bridges the gap between ambition and execution. An integrated ecosystem for strategy, development, and marketing.
+                            GrowBit puts boots on the ground so you don't have to. A nationwide feet-on-street network with real-time tracking and measurable results.
                         </p>
 
                         <motion.button
@@ -117,7 +117,7 @@ const Hero = () => {
                         >
                             <span className="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#75ccc3_0%,#0B1120_50%,#0B1120_100%)]" />
                             <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-[#09090b] px-8 py-4 text-sm md:text-base font-bold text-white backdrop-blur-3xl group-hover:bg-[#09090b]/90 transition-colors">
-                                <FlipText>Start Growing Now</FlipText>
+                                <FlipText>Get Started</FlipText>
                             </span>
                         </motion.button>
 
@@ -129,14 +129,14 @@ const Hero = () => {
                                     </div>
                                 ))}
                                 <div className="w-8 sm:w-10 h-8 sm:h-10 rounded-full border-2 border-[#09090b] bg-gradient-to-r from-[#9cd4af] to-[#75ccc3] flex items-center justify-center text-[#09090b] text-[10px] sm:text-xs font-bold">
-                                    2k+
+                                    5k+
                                 </div>
                             </div>
                             <div className="flex flex-col">
                                 <div className="flex text-yellow-400 text-xs sm:text-sm">
                                     {'★'.repeat(5)}
                                 </div>
-                                <span className="text-xs sm:text-sm text-gray-400 font-medium">Trusted by 500+ founders</span>
+                                <span className="text-xs sm:text-sm text-gray-400 font-medium">Trusted by 150+ enterprises</span>
                             </div>
                         </div>
                     </div>
@@ -166,8 +166,8 @@ const Hero = () => {
                                     <Target className="w-4 sm:w-4 lg:w-5 h-4 sm:h-4 lg:h-5" />
                                 </div>
                                 <div>
-                                    <div className="font-bold text-white text-xs sm:text-sm lg:text-base">Strategy</div>
-                                    <div className="text-[10px] sm:text-xs text-gray-400">Audit & Plan</div>
+                                    <div className="font-bold text-white text-xs sm:text-sm lg:text-base">GIS Survey</div>
+                                    <div className="text-[10px] sm:text-xs text-gray-400">Field Mapping</div>
                                 </div>
                                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent rounded-xl sm:rounded-2xl" />
                             </motion.div>
@@ -184,8 +184,8 @@ const Hero = () => {
                                     <BarChart3 className="w-4 sm:w-4 lg:w-5 h-4 sm:h-4 lg:h-5" />
                                 </div>
                                 <div>
-                                    <div className="font-bold text-white text-xs sm:text-sm lg:text-base">Analytics</div>
-                                    <div className="text-[10px] sm:text-xs text-gray-400">Data Insights</div>
+                                    <div className="font-bold text-white text-xs sm:text-sm lg:text-base">Tracking</div>
+                                    <div className="text-[10px] sm:text-xs text-gray-400">Live Dashboards</div>
                                 </div>
                                 <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent  rounded-xl sm:rounded-2xl" />
                             </motion.div>
@@ -202,8 +202,8 @@ const Hero = () => {
                                     <Megaphone className="w-4 sm:w-4 lg:w-5 h-4 sm:h-4 lg:h-5" />
                                 </div>
                                 <div>
-                                    <div className="font-bold text-white text-xs sm:text-sm lg:text-base">Marketing</div>
-                                    <div className="text-[10px] sm:text-xs text-gray-400">Growth SEO</div>
+                                    <div className="font-bold text-white text-xs sm:text-sm lg:text-base">Acquisition</div>
+                                    <div className="text-[10px] sm:text-xs text-gray-400">Merchant & Customer</div>
                                 </div>
                                 <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-transparent rounded-xl sm:rounded-2xl" />
                             </motion.div>
@@ -220,8 +220,8 @@ const Hero = () => {
                                     <Code className="w-4 sm:w-4 lg:w-5 h-4 sm:h-4 lg:h-5" />
                                 </div>
                                 <div>
-                                    <div className="font-bold text-white text-xs sm:text-sm lg:text-base">Development</div>
-                                    <div className="text-[10px] sm:text-xs text-gray-400">Web & Apps</div>
+                                    <div className="font-bold text-white text-xs sm:text-sm lg:text-base">Verification</div>
+                                    <div className="text-[10px] sm:text-xs text-gray-400">BGV & Compliance</div>
                                 </div>
                                 <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent rounded-xl sm:rounded-2xl" />
                             </motion.div>

@@ -119,7 +119,7 @@ const TextHoverEffect = ({ lines, duration = 0 }) => {
 
 const FooterTagline = () => {
     return (
-        <div className="fixed bottom-0 left-0 right-0 w-full bg-[#09090b] z-[-1] h-[200px] sm:h-[206px] md:h-[306px]">
+        <div className="fixed bottom-0 left-0 right-0 w-full bg-[#09090b] z-0 h-[200px] sm:h-[206px] md:h-[306px]">
             <div className="w-full h-full px-4 sm:px-6 lg:px-8">
                 <TextHoverEffect lines={["LET'S GROW", "TOGETHER"]} duration={0} />
             </div>

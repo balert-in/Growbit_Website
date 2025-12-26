@@ -14,7 +14,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <main className="min-h-screen w-full mb-[200px] sm:mb-[205px] md:mb-[305px]">
+      <main className="min-h-screen w-full relative z-10 bg-[#09090b] mb-[200px] sm:mb-[205px] md:mb-[305px]">
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -24,8 +24,8 @@ const App = () => {
           <Route path="/TermsAndConditions" element={<TermsAndConditions />} />
         </Routes>
         <Footer />
-        <FooterTagline />
       </main>
+      <FooterTagline />
     </BrowserRouter>
   )
 }

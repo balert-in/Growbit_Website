@@ -1,9 +1,17 @@
-import { motion } from "framer-motion"
-import { useState } from "react"
-import svgPaths from "../assets/ContactSVG"
-import imgImg1 from "/contactImg.webp"
-import Select from "../components/Select"
-import { EMAIL_MAX_LENGTH, FIRSTNAME_MAX_LENGTH, LASTNAME_MAX_LENGTH, MESSAGE_MAX_LENGTH, PHONE_REGEX, SERVICE_OPTIONS, WHY_CHOOSE_FEATURES } from "../utils/constant"
+import { motion } from "framer-motion";
+import { useState } from "react";
+import svgPaths from "../assets/ContactSVG";
+import imgImg1 from "/contact_illustration.png";
+import Select from "../components/Select";
+import {
+  EMAIL_MAX_LENGTH,
+  FIRSTNAME_MAX_LENGTH,
+  LASTNAME_MAX_LENGTH,
+  MESSAGE_MAX_LENGTH,
+  PHONE_REGEX,
+  SERVICE_OPTIONS,
+  WHY_CHOOSE_FEATURES,
+} from "../utils/constant";
 
 const fadeInBlur = {
   hidden: { opacity: 0, y: 50, filter: "blur(10px)" },
@@ -13,7 +21,7 @@ const fadeInBlur = {
     filter: "blur(0px)",
     transition: { duration: 0.8 },
   },
-}
+};
 
 const staggerChildren = {
   hidden: { opacity: 0 },
@@ -23,7 +31,7 @@ const staggerChildren = {
       staggerChildren: 0.2,
     },
   },
-}
+};
 
 function ContactHeroSection() {
   return (
@@ -55,8 +63,12 @@ function ContactHeroSection() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <span className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold">Get in </span>
-          <span className="text-[#9cd4af] text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold">Touch</span>
+          <span className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold">
+            Get in{" "}
+          </span>
+          <span className="text-[#9cd4af] text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold">
+            Touch
+          </span>
         </motion.h1>
         <motion.p
           className="text-white text-base sm:text-lg md:text-xl lg:text-2xl text-center max-w-xs sm:max-w-md md:max-w-lg lg:max-w-2xl mb-6 sm:mb-8 md:mb-10 lg:mb-12 leading-relaxed px-4"
@@ -66,11 +78,12 @@ function ContactHeroSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          Ready to scale your business? Let's connect and discuss how GrowBit can transform your growth journey.
+          Ready to scale your business? Let's connect and discuss how GrowBit
+          can transform your growth journey.
         </motion.p>
       </div>
     </section>
-  )
+  );
 }
 
 function ContactInfoSection() {
@@ -83,7 +96,7 @@ function ContactInfoSection() {
       ),
       title: "Phone",
       description: "Call us directly for immediate assistance",
-      contacts: ["+91 90638 90638", "+91 87654 32109"],
+      contacts: ["+91 90638 90638"],
       availability: "Mon-Fri: 9AM-6PM IST",
       bgGradient: "bg-gradient-to-r from-[#9cd4af] to-[#75ccc3]",
       borderColor: "border-[#9cd4af]",
@@ -109,12 +122,16 @@ function ContactInfoSection() {
       ),
       title: "Address",
       description: "Visit our office",
-      contacts: ["Vasavi Colony B, Plot No- 18 B", "Vikrampuri Colony, Karkhana", "Secunderabad, Telangana 500015, India"],
+      contacts: [
+        "The Mayflower, Plot No.72",
+        "P & T Colony, Karkhana",
+        "Secunderabad, Telangana 500009",
+      ],
       availability: "Open for meetings by appointment",
       bgGradient: "bg-gradient-to-r from-[#d7e48a] to-[#9cd4af]",
       borderColor: "border-[#d7e48a]",
     },
-  ]
+  ];
 
   return (
     <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-r from-gray-50 to-white relative overflow-hidden">
@@ -168,24 +185,33 @@ function ContactInfoSection() {
                 {card.icon}
               </div>
 
-              <h3 className="text-xl sm:text-2xl font-bold text-center text-gray-900 mb-2 sm:mb-4">{card.title}</h3>
-              <p className="text-gray-600 text-center mb-6 sm:mb-8">{card.description}</p>
+              <h3 className="text-xl sm:text-2xl font-bold text-center text-gray-900 mb-2 sm:mb-4">
+                {card.title}
+              </h3>
+              <p className="text-gray-600 text-center mb-6 sm:mb-8">
+                {card.description}
+              </p>
 
               <div className="space-y-2 mb-4 sm:mb-6">
                 {card.contacts.map((contact, cIndex) => (
-                  <p key={cIndex} className="text-base sm:text-lg font-semibold text-center text-gray-900">
+                  <p
+                    key={cIndex}
+                    className="text-base sm:text-lg font-semibold text-center text-gray-900"
+                  >
                     {contact}
                   </p>
                 ))}
               </div>
 
-              <p className="text-xs sm:text-sm text-center text-gray-500">{card.availability}</p>
+              <p className="text-xs sm:text-sm text-center text-gray-500">
+                {card.availability}
+              </p>
             </motion.div>
           ))}
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
 
 function ContactFormSection() {
@@ -196,53 +222,54 @@ function ContactFormSection() {
     phone: "",
     selectedService: "",
     message: "",
-  })
-  const [formErrors, setFormErrors] = useState({})
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  });
+  const [formErrors, setFormErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validate = (data) => {
-    const errors = {}
+    const errors = {};
     if (!data.firstName.trim()) {
-      errors.firstName = "First name is required"
+      errors.firstName = "First name is required";
     } else if (!/^[A-Za-z]{1,20}$/.test(data.firstName)) {
-      errors.firstName = "First name must be between 1 and 20 letters"
+      errors.firstName = "First name must be between 1 and 20 letters";
     }
     if (!data.lastName.trim()) {
-      errors.lastName = "Last name is required"
+      errors.lastName = "Last name is required";
     } else if (!/^[A-Za-z]{1,20}$/.test(data.lastName)) {
-      errors.lastName = "Last name must be between 1 and 20 letters"
+      errors.lastName = "Last name must be between 1 and 20 letters";
     }
     if (!data.email.trim()) {
-      errors.email = "Email is required"
+      errors.email = "Email is required";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
-      errors.email = "Invalid email address"
+      errors.email = "Invalid email address";
     } else if (data.email.length > EMAIL_MAX_LENGTH) {
-      errors.email = `Email must be less than ${EMAIL_MAX_LENGTH} characters`
+      errors.email = `Email must be less than ${EMAIL_MAX_LENGTH} characters`;
     }
     if (!data.phone.trim()) {
-      errors.phone = "Phone number is required"
+      errors.phone = "Phone number is required";
     } else if (!PHONE_REGEX.test(data.phone)) {
-      errors.phone = "Invalid phone number (must be 10 digits starting with 6-9)"
+      errors.phone =
+        "Invalid phone number (must be 10 digits starting with 6-9)";
     }
     if (!data.selectedService) {
-      errors.selectedService = "Please select a service"
+      errors.selectedService = "Please select a service";
     }
     if (!data.message.trim()) {
-      errors.message = "Message is required"
+      errors.message = "Message is required";
     } else if (data.message.length > MESSAGE_MAX_LENGTH) {
-      errors.message = `Message must be less than ${MESSAGE_MAX_LENGTH} characters`
+      errors.message = `Message must be less than ${MESSAGE_MAX_LENGTH} characters`;
     }
-    return errors
-  }
+    return errors;
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    const errors = validate(formData)
-    setFormErrors(errors)
+    e.preventDefault();
+    const errors = validate(formData);
+    setFormErrors(errors);
     if (Object.keys(errors).length === 0) {
-      setIsSubmitting(true)
-      await new Promise((resolve) => setTimeout(resolve, 2000))
-      setIsSubmitting(false)
+      setIsSubmitting(true);
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      setIsSubmitting(false);
       setFormData({
         firstName: "",
         lastName: "",
@@ -250,28 +277,40 @@ function ContactFormSection() {
         phone: "",
         selectedService: "",
         message: "",
-      })
-      setFormErrors({})
-      alert("Form submitted successfully!")
+      });
+      setFormErrors({});
+      alert("Form submitted successfully!");
     }
-  }
+  };
 
   return (
     <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-r from-black to-gray-800 relative overflow-hidden">
       <motion.div
         className="absolute bg-[#d7e48a] opacity-10 rounded-bl-[56px] rounded-br-[49px] rounded-tl-[46px] rounded-tr-[49px] w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 lg:w-64 lg:h-64 right-4 sm:right-auto sm:left-[400px] md:left-[500px] lg:left-[720px] top-20 sm:top-40"
         animate={{ rotate: 360 }}
-        transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+        transition={{
+          duration: 20,
+          repeat: Number.POSITIVE_INFINITY,
+          ease: "linear",
+        }}
       />
       <motion.div
         className="absolute bg-[#75ccc3] opacity-10 rounded-bl-[56px] rounded-br-[49px] rounded-tl-[46px] rounded-tr-[49px] w-40 h-40 sm:w-60 sm:h-60 md:w-80 md:h-80 lg:w-96 lg:h-96 left-[-20px] sm:left-0 md:left-10 lg:left-20 top-[400px] sm:top-[500px] md:top-[570px]"
         animate={{ rotate: -360 }}
-        transition={{ duration: 25, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+        transition={{
+          duration: 25,
+          repeat: Number.POSITIVE_INFINITY,
+          ease: "linear",
+        }}
       />
       <motion.div
         className="absolute bg-[#9cd4af] opacity-10 rounded-bl-[56px] rounded-br-[49px] rounded-tl-[46px] rounded-tr-[49px] w-40 h-40 sm:w-60 sm:h-60 md:w-70 md:h-70 lg:w-80 lg:h-80 right-[-20px] sm:right-0 md:right-10 lg:right-auto lg:left-[1080px] top-10 sm:top-20"
         animate={{ rotate: 360 }}
-        transition={{ duration: 30, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+        transition={{
+          duration: 30,
+          repeat: Number.POSITIVE_INFINITY,
+          ease: "linear",
+        }}
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
@@ -302,82 +341,145 @@ function ContactFormSection() {
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-white text-sm font-semibold mb-2">First Name</label>
+                <label className="block text-white text-sm font-semibold mb-2">
+                  First Name
+                </label>
                 <input
                   type="text"
                   value={formData.firstName}
-                  onChange={(e) => setFormData({ ...formData, firstName: e.target.value.replace(/[^A-Za-z]/g, '').slice(0, FIRSTNAME_MAX_LENGTH) })}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      firstName: e.target.value
+                        .replace(/[^A-Za-z]/g, "")
+                        .slice(0, FIRSTNAME_MAX_LENGTH),
+                    })
+                  }
                   placeholder="Arjun"
                   className="w-full h-12 px-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-[#9cd4af] transition-colors"
                   required
                   maxLength={FIRSTNAME_MAX_LENGTH}
                 />
-                {formErrors.firstName && <p className="text-red-500 text-xs mt-1">{formErrors.firstName}</p>}
+                {formErrors.firstName && (
+                  <p className="text-red-500 text-xs mt-1">
+                    {formErrors.firstName}
+                  </p>
+                )}
               </div>
               <div>
-                <label className="block text-white text-sm font-semibold mb-2">Last Name</label>
+                <label className="block text-white text-sm font-semibold mb-2">
+                  Last Name
+                </label>
                 <input
                   type="text"
                   value={formData.lastName}
-                  onChange={(e) => setFormData({ ...formData, lastName: e.target.value.replace(/[^A-Za-z]/g, '').slice(0, LASTNAME_MAX_LENGTH) })}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      lastName: e.target.value
+                        .replace(/[^A-Za-z]/g, "")
+                        .slice(0, LASTNAME_MAX_LENGTH),
+                    })
+                  }
                   placeholder="Sharma"
                   className="w-full h-12 px-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-[#9cd4af] transition-colors"
                   required
                   maxLength={LASTNAME_MAX_LENGTH}
                 />
-                {formErrors.lastName && <p className="text-red-500 text-xs mt-1">{formErrors.lastName}</p>}
+                {formErrors.lastName && (
+                  <p className="text-red-500 text-xs mt-1">
+                    {formErrors.lastName}
+                  </p>
+                )}
               </div>
             </div>
             <div>
-              <label className="block text-white text-sm font-semibold mb-2">Email Address</label>
+              <label className="block text-white text-sm font-semibold mb-2">
+                Email Address
+              </label>
               <input
                 type="email"
                 value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value.slice(0, EMAIL_MAX_LENGTH) })}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    email: e.target.value.slice(0, EMAIL_MAX_LENGTH),
+                  })
+                }
                 placeholder="arjun.sharma@example.com"
                 className="w-full h-12 px-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-[#9cd4af] transition-colors"
                 required
                 maxLength={EMAIL_MAX_LENGTH}
               />
-              {formErrors.email && <p className="text-red-500 text-xs mt-1">{formErrors.email}</p>}
+              {formErrors.email && (
+                <p className="text-red-500 text-xs mt-1">{formErrors.email}</p>
+              )}
             </div>
             <div>
-              <label className="block text-white text-sm font-semibold mb-2">Phone Number</label>
+              <label className="block text-white text-sm font-semibold mb-2">
+                Phone Number
+              </label>
               <input
                 type="tel"
                 value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value.replace(/[^0-9]/g, '').slice(0, 10) })}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    phone: e.target.value.replace(/[^0-9]/g, "").slice(0, 10),
+                  })
+                }
                 placeholder="+91 98765 43210"
                 className="w-full h-12 px-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-[#9cd4af] transition-colors"
                 required
                 maxLength={10}
               />
-              {formErrors.phone && <p className="text-red-500 text-xs mt-1">{formErrors.phone}</p>}
+              {formErrors.phone && (
+                <p className="text-red-500 text-xs mt-1">{formErrors.phone}</p>
+              )}
             </div>
             <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Choose a Service (Medium)</label>
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
+                Choose a Service (Medium)
+              </label>
               <Select
                 options={SERVICE_OPTIONS}
                 value={formData.selectedService}
-                onChange={(val) => setFormData({ ...formData, selectedService: val })}
+                onChange={(val) =>
+                  setFormData({ ...formData, selectedService: val })
+                }
                 placeholder="Select a service..."
                 clearable
                 size="md"
               />
-              {formErrors.selectedService && <p className="text-red-500 text-xs mt-1">{formErrors.selectedService}</p>}
+              {formErrors.selectedService && (
+                <p className="text-red-500 text-xs mt-1">
+                  {formErrors.selectedService}
+                </p>
+              )}
             </div>
             <div>
-              <label className="block text-white text-sm font-semibold mb-2">Message</label>
+              <label className="block text-white text-sm font-semibold mb-2">
+                Message
+              </label>
               <textarea
                 value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value.slice(0, MESSAGE_MAX_LENGTH) })}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    message: e.target.value.slice(0, MESSAGE_MAX_LENGTH),
+                  })
+                }
                 placeholder="Tell us about your project requirements..."
                 rows={6}
                 className="w-full p-4 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-[#9cd4af] transition-colors resize-none"
                 required
                 maxLength={MESSAGE_MAX_LENGTH}
               />
-              {formErrors.message && <p className="text-red-500 text-xs mt-1">{formErrors.message}</p>}
+              {formErrors.message && (
+                <p className="text-red-500 text-xs mt-1">
+                  {formErrors.message}
+                </p>
+              )}
             </div>
             <motion.button
               type="submit"
@@ -393,7 +495,11 @@ function ContactFormSection() {
               ) : (
                 <div className="flex items-center justify-center gap-2">
                   Send Message
-                  <svg className="w-4 h-4 group-hover:rotate-45 group-hover:translate-x-3 duration-300" viewBox="0 0 16 16" fill="none">
+                  <svg
+                    className="w-4 h-4 group-hover:rotate-45 group-hover:translate-x-3 duration-300"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                  >
                     <path d={svgPaths.p37f39c00} fill="black" />
                   </svg>
                 </div>
@@ -410,7 +516,7 @@ function ContactFormSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <div
-              className="w-full hidden lg:block h-48 sm:h-60 md:h-80 bg-cover bg-center rounded-3xl shadow-xl"
+              className="w-full hidden lg:block h-48 sm:h-60 md:h-96 bg-cover bg-center rounded-3xl shadow-xl"
               style={{ backgroundImage: `url('${imgImg1}')` }}
             />
 
@@ -440,7 +546,7 @@ function ContactFormSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
 function MapSection() {
@@ -484,9 +590,8 @@ function MapSection() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
-
 
 const Contact = () => {
   return (
@@ -496,7 +601,7 @@ const Contact = () => {
       <ContactFormSection />
       <MapSection />
     </div>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;

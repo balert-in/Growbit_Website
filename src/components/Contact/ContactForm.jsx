@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
+import { Send } from 'lucide-react'
 import { FIRSTNAME_MAX_LENGTH, LASTNAME_MAX_LENGTH, EMAIL_MAX_LENGTH, PHONE_REGEX, MESSAGE_MAX_LENGTH } from '../..//constants/constant'
 
 const ContactForm = () => {
@@ -164,7 +165,7 @@ const ContactForm = () => {
                         className="mt-0.5 w-4 h-4 rounded border-gray-300 bg-white text-[#75ccc3] focus:ring-[#75ccc3] focus:ring-offset-0"
                     />
                     <p className="text-xs text-gray-500 leading-relaxed">
-                        I agree to the <a href="#" className="underline hover:text-[#75ccc3] font-medium text-gray-600 transition-colors">Privacy Policy</a> and consent to being contacted.
+                        I agree to the <a href="/PrivacyPolicy" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#75ccc3] font-medium text-gray-600 transition-colors">Privacy Policy</a> and consent to being contacted.
                     </p>
                 </div>
                 {errors.agree && <p className={errorTextClasses}>{errors.agree}</p>}
@@ -174,9 +175,10 @@ const ContactForm = () => {
                 whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.99 }}
                 type="submit"
-                className="w-full bg-gradient-to-r from-[#75ccc3] to-[#9cd4af] text-gray-900 font-bold py-3.5 rounded-xl flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-[#75ccc3]/25 transition-all text-sm uppercase tracking-wide mt-2"
+                className="group w-full bg-gradient-to-r from-[#75ccc3] to-[#9cd4af] text-gray-900 font-bold py-3.5 rounded-xl flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-[#75ccc3]/25 transition-all text-sm uppercase tracking-wide mt-2"
             >
-                <span>Send Message</span>
+                <span>Discuss Your Project</span>
+                <Send className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
             </motion.button>
         </motion.form>
     )

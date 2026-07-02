@@ -1,10 +1,10 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 const CTA = () => {
     return (
         <section className="py-18 lg:py-24 bg-[#09090b] relative overflow-hidden">
-            {/* Background Glows */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#75ccc3]/10 rounded-full blur-[120px]" />
             </div>
@@ -37,10 +37,11 @@ const CTA = () => {
                         transition={{ delay: 0.2 }}
                         className="flex flex-col sm:flex-row items-center justify-center gap-4"
                     >
-                        {/* Primary Button */}
-                        <button className="cursor-pointer w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-[#d7e48a] to-[#75ccc3] text-[#0B1120] font-bold text-lg hover:shadow-[0_0_20px_rgba(117,204,195,0.4)] transition-all duration-300 transform hover:-translate-y-1">
-                            Start Growing Now
-                        </button>
+                        <Link to="/contact">
+                            <button className="cursor-pointer w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-[#d7e48a] to-[#75ccc3] text-[#0B1120] font-bold text-lg hover:shadow-[0_0_20px_rgba(117,204,195,0.4)] transition-all duration-300 transform hover:-translate-y-1">
+                                Start Growing Now
+                            </button>
+                        </Link>
                     </motion.div>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 import React from 'react'
-import { ArrowRight, Play, BarChart3, Target, Megaphone, Code, Sparkles } from 'lucide-react'
+import { BarChart3, Target, Megaphone, Code, Sparkles } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 const FlipText = ({ children }) => {
     return (
@@ -110,16 +111,18 @@ const Hero = () => {
                             GrowBit puts boots on the ground so you don't have to. A nationwide feet-on-street network with real-time tracking and measurable results.
                         </p>
 
-                        <motion.button
-                            initial="initial"
-                            whileHover="hover"
-                            className="relative inline-flex overflow-hidden rounded-full p-[1px] focus:outline-none shadow-[0_0_30px_rgba(117,204,195,0.3)] hover:shadow-[0_0_50px_rgba(117,204,195,0.5)] transition-all duration-300 group mb-8"
-                        >
-                            <span className="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#75ccc3_0%,#0B1120_50%,#0B1120_100%)]" />
-                            <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-[#09090b] px-8 py-4 text-sm md:text-base font-bold text-white backdrop-blur-3xl group-hover:bg-[#09090b]/90 transition-colors">
-                                <FlipText>Get Started</FlipText>
-                            </span>
-                        </motion.button>
+                        <Link to="/contact">
+                            <motion.button
+                                initial="initial"
+                                whileHover="hover"
+                                className="relative inline-flex overflow-hidden rounded-full p-[1px] focus:outline-none shadow-[0_0_30px_rgba(117,204,195,0.3)] hover:shadow-[0_0_50px_rgba(117,204,195,0.5)] transition-all duration-300 group mb-8"
+                            >
+                                <span className="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#75ccc3_0%,#0B1120_50%,#0B1120_100%)]" />
+                                <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-[#09090b] px-8 py-4 text-sm md:text-base font-bold text-white backdrop-blur-3xl group-hover:bg-[#09090b]/90 transition-colors">
+                                    <FlipText>Get Started</FlipText>
+                                </span>
+                            </motion.button>
+                        </Link>
 
                         <div className="flex items-center gap-3 sm:gap-4">
                             <div className="flex -space-x-2 sm:-space-x-3">
@@ -142,8 +145,6 @@ const Hero = () => {
                     </div>
 
                     <div className="relative h-[400px] sm:h-[500px] lg:h-[600px] w-full items-center justify-center flex perspective-1000">
-                        {/* <div className="absolute inset-0 bg-gradient-to-br from-[#9cd4af]/5 via-transparent to-[#75ccc3]/5 rounded-3xl" /> */}
-                        
                         <div className="relative w-full h-full flex items-center justify-center transform-style-3d lg:rotate-x-12">
                             <motion.div
                                 className="absolute z-20 w-20 sm:w-24 lg:w-28 h-20 sm:h-24 lg:h-28 bg-gradient-to-br from-[#18181b] to-[#27272a] rounded-3xl shadow-[0_20px_60px_rgba(156,212,175,0.3)] flex items-center justify-center p-4 sm:p-5 border border-[#9cd4af]/20 backdrop-blur-xl translate-z-10"
@@ -220,8 +221,8 @@ const Hero = () => {
                                     <Code className="w-4 sm:w-4 lg:w-5 h-4 sm:h-4 lg:h-5" />
                                 </div>
                                 <div>
-                                    <div className="font-bold text-white text-xs sm:text-sm lg:text-base">Verification</div>
-                                    <div className="text-[10px] sm:text-xs text-gray-400">BGV & Compliance</div>
+                                    <div className="font-bold text-white text-xs sm:text-sm lg:text-base">Payroll & HR</div>
+                                    <div className="text-[10px] sm:text-xs text-gray-400">Remote Teams</div>
                                 </div>
                                 <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent rounded-xl sm:rounded-2xl" />
                             </motion.div>

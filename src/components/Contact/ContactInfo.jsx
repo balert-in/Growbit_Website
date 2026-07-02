@@ -31,13 +31,6 @@ const ContactInfo = () => {
             content: FOOTER_DATA.sections[2].links[1].label,
             href: FOOTER_DATA.sections[2].links[1].url,
             subtext: "Mon-Fri, 9am - 6pm IST"
-        },
-        {
-            icon: MapPin,
-            title: "Headquarters",
-            content: FOOTER_DATA.sections[2].links[2].label,
-            href: null,
-            subtext: null
         }
     ]
 
@@ -50,7 +43,7 @@ const ContactInfo = () => {
             ref={divRef}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            className="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 h-full flex flex-col justify-between relative overflow-hidden border border-gray-100 shadow-xl shadow-[#75ccc3]/10 group"
+            className="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 md:p-8 h-full flex flex-col relative overflow-hidden border border-gray-100 shadow-xl shadow-[#75ccc3]/10 group"
         >
             <div
                 className="pointer-events-none absolute -inset-px transition duration-300 z-0"
@@ -89,17 +82,6 @@ const ContactInfo = () => {
                         </div>
                     ))}
                 </div>
-            </div>
-
-            <div className="mt-6 sm:mt-8 md:mt-10 relative h-48 sm:h-56 md:h-64 rounded-xl overflow-hidden border border-gray-200 shadow-inner z-10">
-                <iframe
-                    title="GrowBit Office Location"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.964858807839!2d78.4992085!3d17.4555086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9bf604a7d579:0x45423566396cc91f!2sGrowBit%20Business%20Services%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1718030000000!5m2!1sen!2sin"
-                    className="w-full h-full border-0 grayscale-[30%] hover:grayscale-0 transition-all duration-700"
-                    allowFullScreen=""
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                />
             </div>
 
             <div className="absolute top-0 right-0 w-64 h-64 bg-[#9cd4af]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />

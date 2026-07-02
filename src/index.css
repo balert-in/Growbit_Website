@@ -16,7 +16,28 @@
 .bg-blend-secondary {
   background: linear-gradient(135deg, var(--color-accent-1) 0%, var(--color-accent-2) 50%, var(--color-accent-3) 100%);
 }
-html,body{
+html, body {
+  scrollbar-width: thin;
+  scrollbar-color: #9cd4af #09090b;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #9cd4af;
+  border-radius: 5px;
+  border: 2px solid #09090b;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #75ccc3;
 }
 
 .font-caveat {

@@ -1,3 +1,32 @@
+import logoAirtel from '../assets/airtel.webp';
+import logoAirtelPayment from '../assets/airtelpayment.webp';
+import logoAmazonPay from '../assets/amazonpay.webp';
+import logoAmnex from '../assets/amnex.webp';
+import logoApolloHospital from '../assets/apollohospital.webp';
+import logoCafeCoffeeDay from '../assets/cafecoffeeday.webp';
+import logoCashe from '../assets/cashe.webp';
+import logoGhmc from '../assets/ghmc.webp';
+import logoIiflFinance from '../assets/iiflfinance.webp';
+import logoJio from '../assets/jio.webp';
+import logoNeoGeo from '../assets/neogeo.webp';
+import logoNinjaKart from '../assets/ninjakart.webp';
+import logoNiyo from '../assets/niyo.webp';
+import logoPagarBook from '../assets/pagarbook.webp';
+import logoPayswiff from '../assets/payswiff.webp';
+import logoPaytm from '../assets/paytm.webp';
+import logoPhonePe from '../assets/phonepe.webp';
+import logoRapido from '../assets/rapido.webp';
+import logoRsiSoftech from '../assets/rsisoftech.webp';
+import logoShriChaitanya from '../assets/shrichaitanya.webp';
+import logoOla from '../assets/ola.webp';
+import logoIndusInd from '../assets/indusind.webp';
+import logoSubway from '../assets/subway.webp';
+import logoSwiggy from '../assets/swiggy.webp';
+import logoKaram from '../assets/karam.webp';
+import logoVyapar from '../assets/vyapar.webp';
+import logoNamanYatri from '../assets/namanyatri.webp';
+import logoWhatsApp from '../assets/whatsapp.webp';
+
 export const INITIAL_FEATURES = [
     {
         id: '1',
@@ -14,13 +43,13 @@ export const INITIAL_FEATURES = [
     },
     {
         id: '2',
-        title: 'BGV & Compliance Verification',
-        description: 'Trust starts with knowing who you\'re working with. We run thorough background checks on employees, merchants, and partners through secure digital workflows — so you can onboard with confidence and stay compliant without the paperwork headache.',
+        title: 'Payroll & Workforce Management',
+        description: 'Simplify your HR operations with our complete end-to-end outsourcing solutions. From managing payroll to workforce administration for distributed teams, we handle the complexities so you can focus on scaling your core business.',
         keyPoints: [
-            'Identity & Address Verification',
-            'Criminal Record Checks',
-            'Employment History Validation',
-            'Document Authentication & Audit Trail'
+            'End-to-End Payroll Processing',
+            'Distributed Team Management',
+            'Employee Benefits & Compliance',
+            'Seamless Onboarding & Offboarding'
         ],
         imageUrl: '/bgv.webp',
         themeColor: '#75ccc3'
@@ -28,7 +57,7 @@ export const INITIAL_FEATURES = [
     {
         id: '3',
         title: 'Merchant & Customer Acquisition',
-        description: 'Growing your network shouldn\'t feel like a grind. From finding the right merchants to onboarding customers in new territories, we put boots on the ground and handle the heavy lifting — activation, documentation, and ongoing relationship building.',
+        description: 'Growing your network shouldn\'t feel like a grind. From finding the right merchants to onboarding customers in new territories, we put boots on the ground and handle the heavy lifting activation, documentation, and ongoing relationship building.',
         keyPoints: [
             'Territory-Based Lead Generation',
             'End-to-End Merchant Onboarding',
@@ -41,7 +70,7 @@ export const INITIAL_FEATURES = [
     {
         id: '4',
         title: 'Research & Surveys',
-        description: 'Want to know what people really think? Our verified field teams collect ground-level insights straight from your target audience — whether it\'s market research, customer feedback, or product testing. Real people, real answers, real data.',
+        description: 'Want to know what people really think? Our verified field teams collect ground-level insights straight from your target audience whether it\'s market research, customer feedback, or product testing. Real people, real answers, real data.',
         keyPoints: [
             'Consumer & Market Research',
             'Brand Perception Studies',
@@ -83,10 +112,10 @@ export const FOOTER_DATA = {
         {
             title: 'Contact',
             links: [
-                { label: 'hello@growbit.com', url: 'mailto:hello@growbit.com', type: 'email' },
+                { label: 'hello@growbit.in', url: 'mailto:hello@growbit.in', type: 'email' },
                 { label: '+91 90638 90638', url: 'tel:+919063890638', type: 'phone' },
                 {
-                    label: 'Vasavi Colony B, Plot No- 18 B\nVikrampuri Colony, Karkhana\nSecunderabad, Telangana 500015, India',
+                    label: 'Growbit Business Services Private Limited\nInnov8 Mantri Commercio, Tower A, 5th Floor,\nMIS, Deeta Construction Pvt. Ltd., No. 51,\nDevarabisanahalli, Bangalore, Karnataka – 560103',
                     type: 'address'
                 }
             ]
@@ -98,7 +127,7 @@ export const FOOTER_DATA = {
 export const ABOUT_DATA = {
     hero: {
         title: "From Strategy to Street-Level Execution",
-        subtitle: "GrowBit is a field-operations powerhouse with a nationwide feet-on-street network. We help businesses expand faster, reach every customer segment, and turn plans into measurable results — powered by technology, data, and real people on the ground."
+        subtitle: "GrowBit is a field-operations powerhouse with a nationwide feet-on-street network. We help businesses expand faster, reach every customer segment, and turn plans into measurable results powered by technology, data, and real people on the ground."
     },
     stats: [
         {
@@ -125,9 +154,9 @@ export const ABOUT_DATA = {
     journey: {
         title: "Our Journey",
         paragraphs: [
-            "GrowBit started in 2021 with a simple belief — the best way to grow a business is to stay as close as possible to your customers. We saw companies struggling to reach audiences beyond metro cities, facing coordination gaps, and dealing with unreliable on-ground data. So we built a solution that puts real people where they're needed most.",
+            "GrowBit started in 2021 with a simple belief the best way to grow a business is to stay as close as possible to your customers. We saw companies struggling to reach audiences beyond metro cities, facing coordination gaps, and dealing with unreliable on-ground data. So we built a solution that puts real people where they're needed most.",
             "Today, we operate a nationwide feet-on-street network of 5000+ verified field professionals. Our teams handle everything from market expansion and customer acquisition to GIS surveys and compliance verification. Every task is tracked in real-time through our proprietary platform, giving you complete visibility and control over field operations.",
-            "What sets us apart is how we combine human execution with intelligent data. Our technology-enabled approach ensures transparency, accountability, and measurable impact on every project. Whether you're launching in a new region or scaling operations across India, GrowBit makes sure your plans don't just stay on paper — they get executed with speed and precision."
+            "What sets us apart is how we combine human execution with intelligent data. Our technology-enabled approach ensures transparency, accountability, and measurable impact on every project. Whether you're launching in a new region or scaling operations across India, GrowBit makes sure your plans don't just stay on paper they get executed with speed and precision."
         ],
         imageUrl: "/journey.webp"
     },
@@ -135,7 +164,7 @@ export const ABOUT_DATA = {
         {
             year: "2021",
             title: "The Foundation",
-            description: "GrowBit was born with a clear mission — to help businesses stay closer to their customers. We started with a small team focused on feet-on-street services and customer acquisition.",
+            description: "GrowBit was born with a clear mission to help businesses stay closer to their customers. We started with a small team focused on feet-on-street services and customer acquisition.",
             side: "left"
         },
         {
@@ -172,20 +201,36 @@ export const ABOUT_DATA = {
 
 export const FAQ_DATA = [
     {
-        question: "Which cities and regions do you cover?",
-        answer: "We operate across India with 5000+ field professionals spread across metros, tier-2 cities, and even remote areas. If you have a specific region in mind, just reach out — we'll let you know if we're already there or how quickly we can deploy."
+        question: "Which regions can you cover for merchant and customer acquisition?",
+        answer: "We have a nationwide presence with thousands of verified field professionals. Whether you are targeting metro cities or deep rural markets, we can deploy teams to onboard, activate, and retain your merchant or customer base across any region in India."
     },
     {
-        question: "How quickly can you start a campaign?",
-        answer: "For most projects, we can get boots on the ground within 7-10 days. If it's urgent or you need a quick pilot, we've done it in as little as 3-4 days depending on the location and scope."
+        question: "How do you ensure the quality of merchants or customers onboarded?",
+        answer: "Our field executives use a proprietary app with geo-tagging, live image capture, and real-time verification. Every onboarding goes through a stringent digital audit process to ensure you only get genuine, high-quality acquisitions."
     },
     {
-        question: "How do you track field activities?",
-        answer: "Everything runs through our proprietary platform — live GPS tracking, geo-tagged task updates, and real-time dashboards. You'll have complete visibility into what's happening on the ground, without chasing anyone for reports."
+        question: "What kind of research and surveys can your field teams conduct?",
+        answer: "We handle a wide range of on-ground research, including retail audits, consumer sentiment analysis, competitor benchmarking, and product sampling. Our teams gather verified ground-level insights directly from your target audiences and merchant partners."
     },
     {
-        question: "Can you scale up operations quickly if needed?",
-        answer: "That's what we're built for. Whether you need 50 agents or 500, we can scale up fast without compromising on quality. Our network is designed to handle rapid deployment with performance-linked accountability."
+        question: "How do you guarantee the authenticity of the survey data collected?",
+        answer: "All survey data is collected via our centralized platform, which enforces strict validation rules, captures GPS coordinates, and requires timestamped photographic evidence. This completely eliminates data falsification and ensures 100% accuracy."
+    },
+    {
+        question: "Can you manage payroll and compliance for a distributed field workforce?",
+        answer: "Yes, we offer complete HR outsourcing for your distributed teams. We handle end-to-end payroll processing, tax deductions, statutory compliance (PF/ESI), and employee queries, allowing you to focus purely on your core business goals."
+    },
+    {
+        question: "Does your workforce management service include hiring and replacement?",
+        answer: "Absolutely. We don't just manage payroll; we handle the entire employee lifecycle. If a field agent leaves, our rapid-deployment model ensures an immediate replacement so your on-ground operations continue without any downtime."
+    },
+    {
+        question: "What technologies do you use for GIS surveys and field mapping?",
+        answer: "Our teams are equipped with advanced spatial data collection tools that integrate seamlessly with modern GIS platforms. We capture precise coordinates, structural details, and high-resolution media for integrated field mapping and operational accuracy."
+    },
+    {
+        question: "How quickly can you deploy a team for large-scale operations?",
+        answer: "Thanks to our extensive nationwide network, we can mobilize specialized field teams within 7 to 10 days for large-scale operations. For urgent pilot projects across any of our service verticals, we can often deploy resources in as little as 3 to 4 days."
     }
 ];
 
@@ -203,7 +248,7 @@ export const TESTIMONIALS_DATA = [
         name: "Sneha Kulkarni",
         role: "Project Manager, UrbanSurvey Co.",
         image: "https://api.dicebear.com/9.x/notionists/svg?seed=Sneha",
-        feedback: "The GIS survey team was thorough and professional. Every data point was geo-tagged and verified — exactly what we needed for our municipal mapping project.",
+        feedback: "The GIS survey team was thorough and professional. Every data point was geo-tagged and verified exactly what we needed for our municipal mapping project.",
         rating: 5
     },
     {
@@ -227,32 +272,38 @@ export const TESTIMONIALS_DATA = [
         name: "Nikhil Agarwal",
         role: "Founder, InsightLoop",
         image: "https://api.dicebear.com/9.x/notionists/svg?seed=Nikhil",
-        feedback: "We ran a consumer research study through GrowBit and the quality of responses was fantastic. Real people, real insights — not just checkbox surveys.",
+        feedback: "We ran a consumer research study through GrowBit and the quality of responses was fantastic. Real people, real insights not just checkbox surveys.",
         rating: 5
     }
 ];
 
 export const CLIENTS_DATA = [
-    { name: "Amazon Pay", logo: "https://upload.wikimedia.org/wikipedia/commons/2/29/Amazon_Pay_logo.svg" },
-    { name: "Paytm", logo: "https://upload.wikimedia.org/wikipedia/commons/2/2c/Paytm_Logo_%28standalone%29.svg" },
-    { name: "PhonePe", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e0/PhonePe_Logo.svg" },
-    { name: "WhatsApp", logo: "https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" },
-    { name: "IIFL Finance", logo: "https://cdn.brandfetch.io/iifl.com" },
-    { name: "Airtel Payments Bank", logo: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Airtel_Payments_Bank_logo.svg" },
-    { name: "Jio", logo: "https://upload.wikimedia.org/wikipedia/commons/5/50/Reliance_Jio_Logo_%28October_2015%29.svg" },
-    { name: "Vyapar", logo: "https://cdn.brandfetch.io/vyaparapp.in" },
-    { name: "PagarBook", logo: "https://cdn.brandfetch.io/pagarbook.com" },
-    { name: "Payswiff", logo: "https://cdn.brandfetch.io/payswiff.com" },
-    { name: "CASHe", logo: "https://cdn.brandfetch.io/cashe.co.in" },
-    { name: "IndusInd Bank", logo: "https://cdn.brandfetch.io/indusind.com" },
-    { name: "Ola", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a2/Ola_Cabs_Logo.svg" },
-    { name: "Namma Yatri", logo: "https://cdn.brandfetch.io/nammayatri.in" },
-    { name: "Rapido", logo: "https://static.cdnlogo.com/logos/r/9/rapido.svg" },
-    { name: "Ninjacart", logo: "https://cdn.brandfetch.io/ninjacart.in" },
-    { name: "Niyo", logo: "https://cdn.brandfetch.io/goniyo.com" },
-    { name: "Swiggy", logo: "https://static.cdnlogo.com/logos/s/4/swiggy.svg" },
-    { name: "Subway", logo: "https://upload.wikimedia.org/wikipedia/commons/5/5c/Subway_2016_logo.svg" },
-    { name: "Cafe Coffee Day", logo: "https://cdn.brandfetch.io/cafecoffeeday.com" },
-    { name: "Apollo Hospitals", logo: "https://cdn.brandfetch.io/apollohospitals.com" },
-    { name: "Sri Chaitanya", logo: "https://cdn.brandfetch.io/srichaitanya.net" }
+    { name: "Airtel", logo: logoAirtel },
+    { name: "Airtel Payments Bank", logo: logoAirtelPayment },
+    { name: "Amazon Pay", logo: logoAmazonPay },
+    { name: "Amnex", logo: logoAmnex },
+    { name: "Apollo Hospitals", logo: logoApolloHospital },
+    { name: "Cafe Coffee Day", logo: logoCafeCoffeeDay },
+    { name: "CASHe", logo: logoCashe },
+    { name: "GHMC", logo: logoGhmc },
+    { name: "IIFL Finance", logo: logoIiflFinance },
+    { name: "IndusInd Bank", logo: logoIndusInd },
+    { name: "Jio", logo: logoJio },
+    { name: "Karam", logo: logoKaram },
+    { name: "Namma Yatri", logo: logoNamanYatri },
+    { name: "NeoGeo", logo: logoNeoGeo },
+    { name: "Ninjacart", logo: logoNinjaKart },
+    { name: "Niyo", logo: logoNiyo },
+    { name: "Ola", logo: logoOla },
+    { name: "PagarBook", logo: logoPagarBook },
+    { name: "Payswiff", logo: logoPayswiff },
+    { name: "Paytm", logo: logoPaytm },
+    { name: "PhonePe", logo: logoPhonePe },
+    { name: "Rapido", logo: logoRapido },
+    { name: "RSI Softech", logo: logoRsiSoftech },
+    { name: "Sri Chaitanya", logo: logoShriChaitanya },
+    { name: "Subway", logo: logoSubway },
+    { name: "Swiggy", logo: logoSwiggy },
+    { name: "Vyapar", logo: logoVyapar },
+    { name: "WhatsApp", logo: logoWhatsApp }
 ];

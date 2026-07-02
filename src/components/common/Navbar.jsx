@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
-    const [isScrolled, setIsScrolled] = useState(false)
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-    const location = useLocation()
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -140,14 +139,16 @@ const Navbar = () => {
                     </div>
 
                     <div className="hidden md:block">
-                        <motion.button
-                            className="cursor-pointer bg-gradient-to-r from-accent-1 to-accent-2 text-[#09090b] px-6 py-2.5 rounded-full font-semibold text-sm transition-all hover:shadow-lg hover:shadow-accent-1/25"
-                            whileHover={{ scale: 1.02, y: -2 }}
-                            whileTap={{ scale: 0.98 }}
-                            transition={{ type: 'spring', stiffness: 400, damping: 17 }}
-                        >
-                            Get Started
-                        </motion.button>
+                        <Link to="/contact">
+                            <motion.button
+                                className="cursor-pointer bg-gradient-to-r from-accent-1 to-accent-2 text-[#09090b] px-6 py-2.5 rounded-full font-semibold text-sm transition-all hover:shadow-lg hover:shadow-accent-1/25"
+                                whileHover={{ scale: 1.02, y: -2 }}
+                                whileTap={{ scale: 0.98 }}
+                                transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+                            >
+                                Get Started
+                            </motion.button>
+                        </Link>
                     </div>
 
                     <motion.button
@@ -227,7 +228,7 @@ const Navbar = () => {
                                     }}
                                 >
                                     <Link
-                                        to="/"
+                                        to="/contact"
                                         onClick={() => setIsMobileMenuOpen(false)}
                                     >
                                         <button className="w-full bg-gradient-to-r from-accent-1 to-accent-2 text-[#09090b] px-6 py-4 rounded-2xl font-semibold text-base shadow-lg shadow-accent-1/20 active:scale-[0.98] transition-transform">

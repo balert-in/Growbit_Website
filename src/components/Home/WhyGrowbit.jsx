@@ -1,6 +1,10 @@
-import { motion } from 'framer-motion'
+import { useEffect, useRef } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Zap, Globe2, MapPin, Target, Award } from 'lucide-react'
 import HandDrawnTitle from '../common/HandDrawnTitle'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const benefits = [
     {
@@ -12,7 +16,7 @@ const benefits = [
     {
         icon: Globe2,
         title: "Localized Expertise",
-        description: "Teams with deep regional knowledge and linguistic adaptability. We speak the local language — literally and culturally.",
+        description: "Teams with deep regional knowledge and linguistic adaptability. We speak the local language literally and culturally.",
         color: "#d7e48a"
     },
     {
@@ -35,245 +39,313 @@ const benefits = [
     }
 ]
 
-const CardBackground = ({ title, color }) => {
-    switch (title) {
-        case "Nationwide Coverage":
-            return (
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden opacity-20">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 1 }}
-                        className="w-full h-full flex items-center justify-center p-4"
-                    >
-                        <img 
-                            src="/in.svg" 
-                            alt="India Map" 
-                            className="w-full h-full object-contain filter hue-rotate-15 saturate-50"
-                        />
-                    </motion.div>
-                </div>
-            )
-        case "Faster Deployment":
-            return (
-                <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10">
-                    <svg className="w-full h-full" viewBox="0 0 400 400" preserveAspectRatio="none">
-                        <motion.path
-                            d="M-50,450 L450,-50"
-                            stroke={color}
-                            strokeWidth="40"
-                            strokeLinecap="round"
-                            initial={{ pathLength: 0 }}
-                            whileInView={{ pathLength: 1 }}
-                            transition={{ duration: 1.5, ease: "easeOut" }}
-                        />
-                        <motion.path
-                            d="M50,450 L450,50"
-                            stroke={color}
-                            strokeWidth="20"
-                            strokeLinecap="round"
-                            initial={{ pathLength: 0 }}
-                            whileInView={{ pathLength: 1 }}
-                            transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
-                        />
-                    </svg>
-                </div>
-            )
-        case "Localized Expertise":
-            return (
-                <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10">
-                    <svg className="w-full h-full" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice">
-                        <defs>
-                            <pattern id="grid-pattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-                                <circle cx="2" cy="2" r="1" fill={color} />
-                            </pattern>
-                        </defs>
-                        <rect width="100%" height="100%" fill="url(#grid-pattern)" opacity="0.3" />
-                        
-                        {[
-                            { cx: 50, cy: 50 }, { cx: 150, cy: 50 },
-                            { cx: 50, cy: 150 }, { cx: 150, cy: 150 },
-                            { cx: 100, cy: 100 }
-                        ].map((point, i) => (
-                            <g key={i}>
-                                <motion.circle
-                                    cx={point.cx}
-                                    cy={point.cy}
-                                    r="4"
-                                    fill="none"
-                                    stroke={color}
-                                    strokeWidth="2"
-                                    initial={{ scale: 0, opacity: 0 }}
-                                    whileInView={{ scale: 1, opacity: 1 }}
-                                    transition={{ duration: 0.5, delay: i * 0.1 }}
-                                />
-                                <motion.circle
-                                    cx={point.cx}
-                                    cy={point.cy}
-                                    r="15"
-                                    fill={color}
-                                    fillOpacity="0.2"
-                                    initial={{ scale: 0 }}
-                                    whileInView={{ scale: 1 }}
-                                    transition={{ duration: 1, delay: i * 0.1, repeat: Infinity, repeatType: "reverse" }}
-                                />
-                            </g>
-                        ))}
-                        
-                        <motion.path
-                            d="M50 50 L100 100 L150 50 M50 150 L100 100 L150 150"
-                            stroke={color}
-                            strokeWidth="1"
-                            fill="none"
-                            strokeDasharray="4 4"
-                            initial={{ pathLength: 0 }}
-                            whileInView={{ pathLength: 1 }}
-                            transition={{ duration: 1.5, delay: 0.5 }}
-                        />
-                    </svg>
-                </div>
-            )
-        case "Performance-Driven Model":
-            return (
-                <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10 flex items-end justify-around pb-8 px-8">
-                    {[0.4, 0.6, 0.3, 0.8, 0.5, 0.9].map((height, i) => (
-                        <motion.div
-                            key={i}
-                            className="w-[10%] rounded-t-lg"
-                            style={{ backgroundColor: color, height: `${height * 100}%` }}
-                            initial={{ height: 0 }}
-                            whileInView={{ height: `${height * 100}%` }}
-                            transition={{ duration: 0.8, delay: i * 0.1 }}
-                        />
-                    ))}
-                </div>
-            )
-        case "Trusted by Leading Brands":
-            return (
-                <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10 flex items-center justify-center">
-                    <svg className="w-[150%] h-[150%] animate-[spin_60s_linear_infinite]" viewBox="0 0 100 100">
-                        <circle cx="50" cy="50" r="40" stroke={color} strokeWidth="1" strokeDasharray="4 4" fill="none" />
-                        <circle cx="50" cy="50" r="30" stroke={color} strokeWidth="2" strokeDasharray="2 6" fill="none" />
-                        <path d="M50 10 L60 40 L90 50 L60 60 L50 90 L40 60 L10 50 L40 40 Z" fill={color} opacity="0.5" />
-                    </svg>
-                </div>
-            )
-        default:
-            return null
+const getBentoClasses = (index) => {
+    switch (index) {
+        case 0: return "col-span-1 sm:col-span-2 lg:col-span-2"
+        case 1: return "col-span-1 sm:col-span-1 lg:col-span-1"
+        case 2: return "col-span-1 sm:col-span-1 lg:col-span-1"
+        case 3: return "col-span-1 sm:col-span-1 lg:col-span-1"
+        case 4: return "col-span-1 sm:col-span-1 lg:col-span-1"
+        default: return "col-span-1"
     }
 }
 
-const BenefitCard = ({ benefit, index }) => {
-    const isNationwide = benefit.title === "Nationwide Coverage";
-
-    return (
-        <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            className={`group relative ${isNationwide ? 'md:col-span-2 lg:col-span-1' : ''}`}
-        >
-            <div className="relative h-full bg-gradient-to-br from-gray-900/80 to-gray-900/40 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-gray-800/50 hover:border-gray-700/80 transition-all duration-500 overflow-hidden">
-                
-                <CardBackground title={benefit.title} color={benefit.color} />
-
-                <div 
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+const SpeedBackground = ({ color }) => (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20 group-hover:opacity-40 transition-opacity duration-700">
+        <style>
+            {`
+            @keyframes dashMove {
+                0% { stroke-dashoffset: 100; transform: translateX(-5%); }
+                100% { stroke-dashoffset: -100; transform: translateX(5%); }
+            }
+            `}
+        </style>
+        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            {[...Array(12)].map((_, i) => (
+                <line 
+                    key={i}
+                    x1="-10%" y1={10 + i * 8 + "%"}
+                    x2="110%" y2={10 + i * 8 + "%"}
+                    stroke={color}
+                    strokeWidth={Math.random() * 1.5 + 0.5}
+                    strokeDasharray={`${Math.random() * 30 + 10} ${Math.random() * 40 + 20}`}
                     style={{
-                        background: `radial-gradient(circle at 50% 0%, ${benefit.color}10 0%, transparent 70%)`
+                        animation: `dashMove ${Math.random() * 2 + 1.5}s linear infinite`,
+                        opacity: Math.random() * 0.4 + 0.1
                     }}
                 />
-                
-                <motion.div
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                    className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center mb-5 shadow-lg"
-                    style={{ 
-                        background: `linear-gradient(135deg, ${benefit.color}20 0%, ${benefit.color}10 100%)`,
-                        border: `1px solid ${benefit.color}30`
-                    }}
-                >
-                    <benefit.icon 
-                        className="w-6 h-6 sm:w-7 sm:h-7" 
-                        style={{ color: benefit.color }}
-                    />
-                </motion.div>
+            ))}
+        </svg>
+    </div>
+)
 
-                <h3 className="text-lg sm:text-xl font-bold text-white mb-3 relative z-10">
-                    {benefit.title}
-                </h3>
-                
-                <p className="text-sm sm:text-base text-gray-400 leading-relaxed relative z-10">
-                    {benefit.description}
-                </p>
+const RadarBackground = ({ color }) => (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none flex items-center justify-center opacity-20 group-hover:opacity-40 transition-opacity duration-700">
+        <style>
+            {`
+            @keyframes radarPulse {
+                0% { transform: scale(0.2); opacity: 0.8; }
+                100% { transform: scale(2.5); opacity: 0; }
+            }
+            `}
+        </style>
+        <svg className="w-[150%] h-[150%]" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="10" fill="none" stroke={color} strokeWidth="0.5" style={{ animation: 'radarPulse 4s linear infinite' }} />
+            <circle cx="50" cy="50" r="10" fill="none" stroke={color} strokeWidth="0.5" style={{ animation: 'radarPulse 4s linear infinite 1.3s' }} />
+            <circle cx="50" cy="50" r="10" fill="none" stroke={color} strokeWidth="0.5" style={{ animation: 'radarPulse 4s linear infinite 2.6s' }} />
+            <circle cx="50" cy="50" r="2" fill={color} />
+            <line x1="50" y1="10" x2="50" y2="90" stroke={color} strokeWidth="0.2" opacity="0.4" />
+            <line x1="10" y1="50" x2="90" y2="50" stroke={color} strokeWidth="0.2" opacity="0.4" />
+        </svg>
+    </div>
+)
 
-                <div 
-                    className="absolute bottom-0 left-0 right-0 h-1 opacity-0 group-hover:opacity-100 transition-all duration-500"
+const GridNodesBackground = ({ color }) => (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20 group-hover:opacity-40 transition-opacity duration-700">
+        <style>
+            {`
+            @keyframes blinkNode {
+                0%, 100% { opacity: 0.1; transform: scale(0.8); }
+                50% { opacity: 0.8; transform: scale(1.5); }
+            }
+            `}
+        </style>
+        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern id="dotGridMap" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <circle cx="2" cy="2" r="1" fill={color} opacity="0.2"/>
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#dotGridMap)" />
+            {[...Array(6)].map((_, i) => (
+                <circle
+                    key={i}
+                    cx={`${Math.random() * 80 + 10}%`}
+                    cy={`${Math.random() * 80 + 10}%`}
+                    r="2"
+                    fill={color}
                     style={{
-                        background: `linear-gradient(90deg, transparent 0%, ${benefit.color} 50%, transparent 100%)`
+                        animation: `blinkNode ${Math.random() * 2 + 1.5}s ease-in-out infinite`,
+                        animationDelay: `${Math.random()}s`,
+                        transformOrigin: 'center'
                     }}
                 />
-            </div>
-        </motion.div>
-    )
+            ))}
+        </svg>
+    </div>
+)
+
+const ChartBackground = ({ color }) => (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-15 group-hover:opacity-30 transition-opacity duration-700 flex items-end justify-around px-8 pb-4">
+        <style>
+            {`
+            @keyframes barGrow {
+                0%, 100% { transform: scaleY(0.4); }
+                50% { transform: scaleY(1); }
+            }
+            `}
+        </style>
+        {[...Array(6)].map((_, i) => (
+            <div 
+                key={i}
+                className="w-[8%] rounded-t-sm origin-bottom"
+                style={{
+                    backgroundColor: color,
+                    height: `${30 + Math.random() * 50}%`,
+                    animation: `barGrow ${2 + Math.random() * 2}s ease-in-out infinite`,
+                    animationDelay: `${Math.random()}s`
+                }}
+            />
+        ))}
+    </div>
+)
+
+const OrbitalBackground = ({ color }) => (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-20 group-hover:opacity-40 transition-opacity duration-700 flex items-center justify-center">
+        <style>
+            {`
+            @keyframes orbitSpin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+            @keyframes orbitSpinReverse {
+                0% { transform: rotate(360deg); }
+                100% { transform: rotate(0deg); }
+            }
+            `}
+        </style>
+        <svg className="w-[120%] h-[120%]" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <g style={{ animation: 'orbitSpin 20s linear infinite', transformOrigin: '50% 50%' }}>
+                <circle cx="50" cy="50" r="30" fill="none" stroke={color} strokeWidth="0.3" strokeDasharray="4 4" />
+                <circle cx="80" cy="50" r="2" fill={color} />
+                <circle cx="20" cy="50" r="1.5" fill={color} opacity="0.6"/>
+            </g>
+            <g style={{ animation: 'orbitSpinReverse 25s linear infinite', transformOrigin: '50% 50%' }}>
+                <circle cx="50" cy="50" r="45" fill="none" stroke={color} strokeWidth="0.2" strokeDasharray="2 6" />
+                <circle cx="50" cy="5" r="3" fill={color} opacity="0.8" />
+                <circle cx="50" cy="95" r="1.5" fill={color} opacity="0.5" />
+            </g>
+        </svg>
+    </div>
+)
+
+const CardBackground = ({ color, title }) => {
+    switch (title) {
+        case "Faster Deployment": return <SpeedBackground color={color} />
+        case "Localized Expertise": return <RadarBackground color={color} />
+        case "Nationwide Coverage": return <GridNodesBackground color={color} />
+        case "Performance-Driven Model": return <ChartBackground color={color} />
+        case "Trusted by Leading Brands": return <OrbitalBackground color={color} />
+        default: return null
+    }
 }
 
 const WhyGrowbit = () => {
+    const sectionRef = useRef(null)
+    const titleRef = useRef(null)
+    const descRef = useRef(null)
+    const cardsRef = useRef([])
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.fromTo(
+                titleRef.current,
+                { opacity: 0, y: 50 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: "top 80%",
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            )
+
+            gsap.fromTo(
+                descRef.current,
+                { opacity: 0, y: 30 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    delay: 0.2,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: "top 80%",
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            )
+
+            cardsRef.current.forEach((card, index) => {
+                if (!card) return
+                gsap.fromTo(
+                    card,
+                    { opacity: 0, y: 40, scale: 0.95 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        scale: 1,
+                        duration: 0.8,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: card,
+                            start: "top 85%",
+                            toggleActions: "play none none reverse"
+                        }
+                    }
+                )
+            })
+        }, sectionRef)
+
+        return () => ctx.revert()
+    }, [])
+
     return (
-        <section className="relative py-16 sm:py-20 lg:py-24 bg-[#09090b] overflow-hidden">
+        <section ref={sectionRef} className="relative py-20 sm:py-24 bg-[#09090b] overflow-hidden selection:bg-[#75ccc3]/30">
             <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-[20%] left-[-5%] w-[40%] h-[40%] bg-[#75ccc3]/8 rounded-full blur-[100px]" />
-                <div className="absolute bottom-[20%] right-[-5%] w-[35%] h-[35%] bg-[#d7e48a]/8 rounded-full blur-[100px]" />
+                <div className="absolute top-[10%] left-[-10%] w-[50%] h-[50%] bg-[#75ccc3]/10 rounded-full blur-[120px]" />
+                <div className="absolute bottom-[10%] right-[-10%] w-[40%] h-[40%] bg-[#d7e48a]/10 rounded-full blur-[120px]" />
+                <div className="absolute top-[40%] left-[30%] w-[30%] h-[30%] bg-[#9cd4af]/5 rounded-full blur-[100px]" />
             </div>
 
-            <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.02]" xmlns="http://www.w3.org/2000/svg">
+            <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.03]" xmlns="http://www.w3.org/2000/svg">
                 <defs>
-                    <pattern id="whyGrid" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
-                        <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#75ccc3" strokeWidth="0.5" />
+                    <pattern id="whyGrid" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                        <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#75ccc3" strokeWidth="1" />
                     </pattern>
                 </defs>
                 <rect width="100%" height="100%" fill="url(#whyGrid)" />
             </svg>
 
-            <div className="container mx-auto px-4 sm:px-6 max-w-7xl relative z-10">
-                <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 lg:mb-20">
-                    <HandDrawnTitle text="Why GrowBit" />
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
+                <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+                    <div className="inline-block mb-4 sm:mb-6">
+                        <HandDrawnTitle text="Why GrowBit" />
+                    </div>
                     
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6"
+                    <h2
+                        ref={titleRef}
+                        className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4 sm:mb-6 tracking-tight opacity-0"
                     >
                         Built for{' '}
-                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#75ccc3] to-[#d7e48a]">
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#75ccc3] via-[#9cd4af] to-[#d7e48a]">
                             Real-World Scale
                         </span>
-                    </motion.h2>
+                    </h2>
                     
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.1 }}
-                        className="text-gray-400 text-sm sm:text-base md:text-lg leading-relaxed"
+                    <p
+                        ref={descRef}
+                        className="text-gray-400 text-base sm:text-lg md:text-xl leading-relaxed font-light opacity-0"
                     >
                         What makes us different? Speed, reach, accountability, and a track record that speaks for itself.
-                    </motion.p>
+                    </p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
-                    {benefits.slice(0, 3).map((benefit, index) => (
-                        <BenefitCard key={benefit.title} benefit={benefit} index={index} />
-                    ))}
-                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-5">
+                    {benefits.map((benefit, index) => {
+                        const Icon = benefit.icon
+                        return (
+                            <div
+                                key={benefit.title}
+                                ref={(el) => (cardsRef.current[index] = el)}
+                                className={`group relative flex flex-col ${getBentoClasses(index)} opacity-0`}
+                            >
+                                <div className="relative flex-1 bg-[#111113]/80 backdrop-blur-xl rounded-[1.5rem] p-6 border border-white/[0.05] hover:border-white/[0.1] transition-all duration-500 overflow-hidden shadow-xl hover:shadow-[0_8px_32px_rgba(117,204,195,0.08)] hover:-translate-y-1">
+                                    
+                                    <CardBackground color={benefit.color} title={benefit.title} />
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 lg:gap-8 mt-5 sm:mt-6 lg:mt-8 max-w-4xl mx-auto">
-                    {benefits.slice(3).map((benefit, index) => (
-                        <BenefitCard key={benefit.title} benefit={benefit} index={index + 3} />
-                    ))}
+                                    <div className="relative z-10 flex flex-col h-full justify-between">
+                                        <div
+                                            className="w-12 h-12 rounded-xl flex items-center justify-center mb-8 backdrop-blur-md shrink-0 transition-transform duration-500 group-hover:scale-110"
+                                            style={{ 
+                                                background: `linear-gradient(135deg, ${benefit.color}15 0%, ${benefit.color}05 100%)`,
+                                                border: `1px solid ${benefit.color}30`
+                                            }}
+                                        >
+                                            <Icon 
+                                                className="w-6 h-6" 
+                                                style={{ color: benefit.color }}
+                                            />
+                                        </div>
+
+                                        <div className="mt-auto">
+                                            <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 tracking-tight">
+                                                {benefit.title}
+                                            </h3>
+                                            <p className="text-gray-400 leading-relaxed text-sm sm:text-base max-w-sm">
+                                                {benefit.description}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
         </section>
@@ -281,5 +353,3 @@ const WhyGrowbit = () => {
 }
 
 export default WhyGrowbit
-
-

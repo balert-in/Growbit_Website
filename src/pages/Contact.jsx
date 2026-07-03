@@ -10,13 +10,13 @@ import { motion } from "framer-motion";
 
 const locations = [
   {
-    city: "Secunderabad (Headquarters)",
+    city: "Hyderabad (Headquarters)",
     company: "Growbit Business Services Private Limited",
     address:
       "The Mayflower, Plot No.72, P & T Colony, Karkhana, Secunderabad, Telangana 500009",
   },
   {
-    city: "Secunderabad",
+    city: "Hyderabad",
     company: "Growbit Business Services Private Limited",
     address:
       "The Mayflower, Plot No.72, P & T Colony, Karkhana, Secunderabad, Telangana 500009",

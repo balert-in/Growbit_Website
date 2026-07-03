@@ -10,7 +10,19 @@ import { motion } from "framer-motion";
 
 const locations = [
   {
-    city: "Bangalore (Headquarters)",
+    city: "Secunderabad (Headquarters)",
+    company: "Growbit Business Services Private Limited",
+    address:
+      "The Mayflower, Plot No.72, P & T Colony, Karkhana, Secunderabad, Telangana 500009",
+  },
+  {
+    city: "Secunderabad",
+    company: "Growbit Business Services Private Limited",
+    address:
+      "The Mayflower, Plot No.72, P & T Colony, Karkhana, Secunderabad, Telangana 500009",
+  },
+  {
+    city: "Bangalore",
     company: "Growbit Business Services Private Limited",
     address:
       "Innov8 Mantri Commercio, Tower A, 5th Floor, MIS, Deeta Construction Pvt. Ltd., No. 51, Devarabisanahalli, Bangalore, Karnataka – 560103",
@@ -122,13 +134,13 @@ const Contact = () => {
                         Call us
                       </p>
                       <a
-                        href={FOOTER_DATA.sections[2].links[1].url}
+                        href="tel:09063890638"
                         className="text-lg font-semibold text-gray-900 hover:text-[#75ccc3] transition-colors"
                       >
-                        {FOOTER_DATA.sections[2].links[1].label}
+                        090638 90638
                       </a>
                       <p className="text-sm text-gray-500 mt-1">
-                        Mon-Fri, 9am - 6pm IST
+                        Mon-Sat, 10am - 6pm (Sun Closed)
                       </p>
                     </div>
                   </div>
@@ -183,19 +195,19 @@ const Contact = () => {
                 {locations.slice(1).map((loc, idx) => (
                   <div
                     key={`mob1-${idx}`}
-                    className="w-[85vw] sm:w-[320px] bg-white rounded-2xl p-5 border border-gray-100 shadow-xl shadow-[#75ccc3]/10 flex items-start gap-4"
+                    className="w-[85vw] sm:w-[320px] bg-white rounded-2xl p-5 border border-gray-100 shadow-xl shadow-[#75ccc3]/5 flex items-start gap-4 relative overflow-hidden"
                   >
-                    <div className="p-2.5 rounded-xl bg-gradient-to-br from-[#75ccc3]/10 to-[#d7e48a]/10 shrink-0">
+                    <div className="p-2.5 rounded-xl bg-gradient-to-br from-[#75ccc3]/10 to-[#d7e48a]/10 border border-[#75ccc3]/20 shrink-0 relative z-10">
                       <MapPin className="w-5 h-5 text-[#75ccc3]" />
                     </div>
-                    <div>
-                      <h3 className="text-base font-bold text-gray-900 mb-1">
+                    <div className="relative z-10">
+                      <h3 className="text-base font-bold text-gray-900 mb-0.5">
                         {loc.city}
                       </h3>
-                      <p className="text-xs font-semibold text-gray-800 mb-1.5">
+                      <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-wide mb-2">
                         {loc.company}
                       </p>
-                      <p className="text-xs text-gray-500 leading-relaxed">
+                      <p className="text-xs text-gray-600 leading-relaxed">
                         {loc.address}
                       </p>
                     </div>
@@ -206,19 +218,19 @@ const Contact = () => {
                 {locations.slice(1).map((loc, idx) => (
                   <div
                     key={`mob2-${idx}`}
-                    className="w-[85vw] sm:w-[320px] bg-white rounded-2xl p-5 border border-gray-100 shadow-xl shadow-[#75ccc3]/10 flex items-start gap-4"
+                    className="w-[85vw] sm:w-[320px] bg-white rounded-2xl p-5 border border-gray-100 shadow-xl shadow-[#75ccc3]/5 flex items-start gap-4 relative overflow-hidden"
                   >
-                    <div className="p-2.5 rounded-xl bg-gradient-to-br from-[#75ccc3]/10 to-[#d7e48a]/10 shrink-0">
+                    <div className="p-2.5 rounded-xl bg-gradient-to-br from-[#75ccc3]/10 to-[#d7e48a]/10 border border-[#75ccc3]/20 shrink-0 relative z-10">
                       <MapPin className="w-5 h-5 text-[#75ccc3]" />
                     </div>
-                    <div>
-                      <h3 className="text-base font-bold text-gray-900 mb-1">
+                    <div className="relative z-10">
+                      <h3 className="text-base font-bold text-gray-900 mb-0.5">
                         {loc.city}
                       </h3>
-                      <p className="text-xs font-semibold text-gray-800 mb-1.5">
+                      <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-wide mb-2">
                         {loc.company}
                       </p>
-                      <p className="text-xs text-gray-500 leading-relaxed">
+                      <p className="text-xs text-gray-600 leading-relaxed">
                         {loc.address}
                       </p>
                     </div>
@@ -228,24 +240,30 @@ const Contact = () => {
             </motion.div>
           </div>
 
-          {/* Desktop Grid */}
-          <div className="hidden md:grid md:grid-cols-2 gap-6 lg:gap-8">
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {locations.slice(1).map((loc, idx) => (
               <div
                 key={`desk-${idx}`}
-                className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-100 shadow-xl shadow-[#75ccc3]/5 hover:shadow-[#75ccc3]/15 hover:-translate-y-1 transition-all duration-300 flex items-start gap-5"
+                className="group relative bg-white rounded-2xl p-6 border border-gray-100 shadow-xl shadow-[#75ccc3]/5 hover:shadow-[#75ccc3]/20 hover:-translate-y-1 transition-all duration-300 flex items-start gap-5 overflow-hidden"
               >
-                <div className="p-3 rounded-xl bg-gradient-to-br from-[#75ccc3]/10 to-[#d7e48a]/10 shrink-0">
-                  <MapPin className="w-6 h-6 text-[#75ccc3]" />
+                {/* Subtle animated gradient top border */}
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#75ccc3] to-[#d7e48a] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                
+                {/* Decorative background blur */}
+                <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-[#75ccc3]/10 to-transparent rounded-full blur-2xl -mr-10 -mb-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                <div className="p-3 rounded-xl bg-gradient-to-br from-[#75ccc3]/10 to-[#d7e48a]/10 border border-[#75ccc3]/20 shrink-0 relative z-10 group-hover:bg-[#75ccc3] transition-colors duration-300">
+                  <MapPin className="w-6 h-6 text-[#75ccc3] group-hover:text-white transition-colors duration-300" />
                 </div>
-                <div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-1">
+                
+                <div className="relative z-10">
+                  <h3 className="text-lg font-bold text-gray-900 mb-0.5 group-hover:text-[#75ccc3] transition-colors duration-300">
                     {loc.city}
                   </h3>
-                  <p className="text-sm font-semibold text-gray-800 mb-2">
+                  <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider mb-2">
                     {loc.company}
                   </p>
-                  <p className="text-sm text-gray-500 leading-relaxed pr-2">
+                  <p className="text-sm text-gray-600 leading-relaxed pr-2">
                     {loc.address}
                   </p>
                 </div>

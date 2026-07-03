@@ -42,6 +42,17 @@ const Features = () => {
                 <div className="absolute top-[10%] left-[-10%] sm:left-[-5%] w-[50%] sm:w-[40%] h-[50%] sm:h-[40%] bg-[#9cd4af]/15 rounded-full blur-[80px] sm:blur-[100px]" />
                 <div className="absolute bottom-[10%] right-[-10%] sm:right-[-5%] w-[50%] sm:w-[40%] h-[50%] sm:h-[40%] bg-[#75ccc3]/15 rounded-full blur-[80px] sm:blur-[100px]" />
 
+                <div
+                    className="absolute top-0 left-0 w-full h-[250px] pointer-events-none"
+                    style={{
+                        backgroundImage: "radial-gradient(#cbd5e1 1px, transparent 1px)",
+                        backgroundSize: "14px 14px",
+                        opacity: 0.9,
+                        maskImage: "linear-gradient(to bottom, black 20%, transparent 100%)",
+                        WebkitMaskImage: "linear-gradient(to bottom, black 20%, transparent 100%)"
+                    }}
+                />
+
                 <div className="hidden sm:block absolute inset-0 bg-[linear-gradient(to_right,#75ccc308_1px,transparent_1px),linear-gradient(to_bottom,#75ccc308_1px,transparent_1px)] bg-[size:220px_220px]" />
 
                 <div className="hidden md:block">

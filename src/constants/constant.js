@@ -3,7 +3,7 @@ export const LASTNAME_MAX_LENGTH = 20
 export const EMAIL_MAX_LENGTH = 50
 export const PHONE_REGEX = /^[6-9][0-9]{9}$/
 export const MESSAGE_MAX_LENGTH = 500
-export const API_URL = "https://dev.growbit.in/api"
+export const API_URL = "https://growbit.in/api"
 
 export const SERVICE_OPTIONS = [
     { value: "merchant-onboarding", label: "Merchant Onboarding" },

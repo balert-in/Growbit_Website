@@ -115,7 +115,7 @@ export const FOOTER_DATA = {
                 { label: 'hello@growbit.in', url: 'mailto:hello@growbit.in', type: 'email' },
                 { label: '+91 90638 90638', url: 'tel:+919063890638', type: 'phone' },
                 {
-                    label: 'Growbit Business Services Private Limited\nInnov8 Mantri Commercio, Tower A, 5th Floor,\nMIS, Deeta Construction Pvt. Ltd., No. 51,\nDevarabisanahalli, Bangalore, Karnataka – 560103',
+                    label: 'Growbit Business Services Private Limited\nThe Mayflower, Plot No.72, P & T Colony,\nKarkhana, Secunderabad, Telangana – 500009',
                     type: 'address'
                 }
             ]

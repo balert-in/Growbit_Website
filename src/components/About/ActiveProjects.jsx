@@ -85,7 +85,7 @@ const ActiveProjects = () => {
         <div className="text-center mb-12 md:mb-16">
           <HandDrawnTitle text="Current Engagements" />
           <FadeInUp className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">
-            Active Projects
+            Active Major Projects
           </FadeInUp>
           <FadeInUp delay={0.1} className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto">
             Discover the high-impact property survey initiatives we are currently executing on the ground.

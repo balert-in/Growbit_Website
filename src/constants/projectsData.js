@@ -16,7 +16,8 @@ export const PROJECTS_DATA = [
     ],
     appInfo: {
       version: 'v2.1.4',
-      os: 'Android & iOS',
+      releaseDate: 'Aug 12, 2023',
+      os: 'Android Only',
       playStoreLink: 'https://play.google.com/store/apps/details?id=dummy.gudm',
       appStoreLink: 'https://apps.apple.com/app/dummy-gudm/id000000000',
       features: [
@@ -44,7 +45,8 @@ export const PROJECTS_DATA = [
     ],
     appInfo: {
       version: 'v3.0.1',
-      os: 'Android & iOS',
+      releaseDate: 'Feb 05, 2024',
+      os: 'Android Only',
       playStoreLink: 'https://play.google.com/store/apps/details?id=dummy.hdmc',
       appStoreLink: 'https://apps.apple.com/app/dummy-hdmc/id000000000',
       features: [

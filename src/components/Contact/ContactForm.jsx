@@ -118,6 +118,10 @@ const ContactForm = () => {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
+    
+    if ((name === 'firstName' || name === 'lastName') && value && !/^[A-Za-z\s]*$/.test(value)) return;
+    if (name === 'phone' && value && !/^\d*$/.test(value)) return;
+
     setFormData((prev) => ({
       ...prev,
       [name]: type === "checkbox" ? checked : value,
@@ -204,6 +208,7 @@ const ContactForm = () => {
             value={formData.phone}
             onChange={handleChange}
             placeholder="9876543210"
+            maxLength={10}
             className={`${inputClasses} ${errors.phone ? errorClasses : ""}`}
           />
           {errors.phone && <p className={errorTextClasses}>{errors.phone}</p>}

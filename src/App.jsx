@@ -6,6 +6,7 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsAndConditions from './pages/TermsAndConditions'
+import ProjectDetails from './pages/ProjectDetails'
 import Footer from './components/common/Footer'
 import FooterTagline from './components/common/FooterTagline'
 import ScrollToTop from './components/common/ScrollToTop'
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
           <Route path="/TermsAndConditions" element={<TermsAndConditions />} />
+          <Route path="/projects/:projectId" element={<ProjectDetails />} />
         </Routes>
         <Footer />
       </main>

@@ -1,6 +1,5 @@
 import React from "react";
 import { MapPin, Mail, Phone } from "lucide-react";
-import(motion);
 import ContactHero from "../components/Contact/ContactHero";
 import ContactForm from "../components/Contact/ContactForm";
 import FAQ from "../components/Contact/FAQ";

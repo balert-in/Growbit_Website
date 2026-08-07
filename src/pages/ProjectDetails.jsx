@@ -10,9 +10,9 @@ import {
   Info,
 } from "lucide-react";
 import Navbar from "../components/common/Navbar";
-import { PROJECTS_DATA } from "../constants/projectsData";
-import { PHONE_REGEX, EMAIL_MAX_LENGTH } from "../constants/constant";
-
+import { PHONE_REGEX, EMAIL_MAX_LENGTH, ADMIN_API_URL } from "../constants/constant";
+import { useProjects } from "../hooks/useProjects";
+import axios from "axios";
 
 const FadeInUp = ({ children, className = "", delay = 0, inView = false }) => {
   const animationProps = inView
@@ -31,55 +31,116 @@ const FadeInUp = ({ children, className = "", delay = 0, inView = false }) => {
   );
 };
 
-const InputField = ({ type = "text", name, value, onChange, placeholder, maxLength, error }) => (
-  <div>
+const InputField = ({
+  type = "text",
+  name,
+  value,
+  onChange,
+  placeholder,
+  maxLength,
+  error,
+}) => (
+  <div className="relative mt-2">
     <input
       type={type}
       name={name}
+      id={name}
       value={value}
       onChange={onChange}
-      placeholder={placeholder}
-      maxLength={maxLength}
-      className={`w-full bg-[#09090b] border ${error ? "border-red-500" : "border-white/10"} rounded-lg px-4 py-2.5 text-sm text-white placeholder:text-gray-600 focus:outline-none focus:border-[#75ccc3] transition-colors`}
+      placeholder=" "
+      className={`peer w-full bg-[#09090b] border ${error ? "border-red-500" : "border-white/20"} rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-[#75ccc3] focus:ring-1 focus:ring-[#75ccc3] transition-colors [&:-webkit-autofill]:[transition:background-color_9999s_ease-in-out_0s] [&:-webkit-autofill]:[-webkit-text-fill-color:white]`}
     />
-    {error && <p className="text-red-500 text-xs mt-1 px-1">{error}</p>}
+    <label
+      htmlFor={name}
+      className={`absolute left-3 px-1 bg-[#09090b] transition-all duration-200 pointer-events-none
+        ${error ? 'text-red-500' : 'text-gray-400 peer-focus:text-[#75ccc3]'}
+        -top-2 text-[11px] font-medium
+        peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-500 peer-placeholder-shown:font-normal
+        peer-focus:-top-2 peer-focus:text-[11px] peer-focus:font-medium
+      `}
+    >
+      {placeholder.replace(" *", "")} <span className="text-red-500">*</span>
+    </label>
+    {error && (
+      <p className="absolute -bottom-4 left-1 text-red-500 text-[10px] sm:text-[11px] truncate w-[95%]">
+        {error}
+      </p>
+    )}
   </div>
 );
 
-const TextAreaField = ({ name, value, onChange, placeholder, maxLength, rows = 3, error }) => (
-  <div>
-    <textarea
-      name={name}
-      value={value}
-      onChange={onChange}
-      placeholder={placeholder}
-      rows={rows}
-      maxLength={maxLength}
-      className={`w-full bg-[#09090b] border ${error ? "border-red-500" : "border-white/10"} rounded-lg px-4 py-2.5 text-sm text-white placeholder:text-gray-600 focus:outline-none focus:border-[#75ccc3] transition-colors resize-none`}
-    ></textarea>
-    {error && <p className="text-red-500 text-xs mt-1 px-1">{error}</p>}
-  </div>
-);
+const TextAreaField = ({
+  name,
+  value,
+  onChange,
+  placeholder,
+  maxLength,
+  rows = 3,
+  error,
+}) => {
+  const wordCount = value.trim() === "" ? 0 : value.trim().split(/\s+/).length;
+  
+  return (
+    <div className="relative mt-2">
+      <textarea
+        name={name}
+        id={name}
+        value={value}
+        onChange={onChange}
+        placeholder=" "
+        rows={rows}
+        maxLength={maxLength}
+        className={`peer w-full bg-[#09090b] border ${error ? "border-red-500" : "border-white/20"} rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-[#75ccc3] focus:ring-1 focus:ring-[#75ccc3] transition-colors resize-none [&:-webkit-autofill]:[transition:background-color_9999s_ease-in-out_0s] [&:-webkit-autofill]:[-webkit-text-fill-color:white]`}
+      ></textarea>
+      <label
+        htmlFor={name}
+        className={`absolute left-3 px-1 bg-[#09090b] transition-all duration-200 pointer-events-none
+          ${error ? 'text-red-500' : 'text-gray-400 peer-focus:text-[#75ccc3]'}
+          -top-2 text-[11px] font-medium
+          peer-placeholder-shown:top-3 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-500 peer-placeholder-shown:font-normal
+          peer-focus:-top-2 peer-focus:text-[11px] peer-focus:font-medium
+        `}
+      >
+        {placeholder.replace(" *", "")} <span className="text-red-500">*</span>
+      </label>
+      <div className="flex justify-between items-start mt-1 px-1">
+        {error ? (
+          <p className="text-red-500 text-xs">{error}</p>
+        ) : (
+          <div />
+        )}
+        <p className={`text-[10px] sm:text-xs ${wordCount < 10 ? 'text-gray-500' : 'text-[#75ccc3]'}`}>
+          {wordCount} / Min 10 words
+        </p>
+      </div>
+    </div>
+  );
+};
 
 const SpecRow = ({ label, value, isMonospace = false, borderClass = "" }) => (
   <div className={`flex justify-between items-center ${borderClass}`}>
     <span className="text-gray-400 text-xs sm:text-sm">{label}</span>
-    <span className={`text-white ${isMonospace ? "text-[11px] sm:text-xs font-mono font-bold bg-white/10 px-2 py-0.5 rounded" : "text-xs sm:text-sm font-medium"}`}>
+    <span
+      className={`text-white ${isMonospace ? "text-[11px] sm:text-xs font-mono font-bold bg-white/10 px-2 py-0.5 rounded" : "text-xs sm:text-sm font-medium"}`}
+    >
       {value}
     </span>
   </div>
 );
 
-
-const InstallationTooltip = ({ showInstallSteps, setShowInstallSteps, project }) => {
+const InstallationTooltip = ({
+  showInstallSteps,
+  setShowInstallSteps,
+  project,
+}) => {
   return (
     <div className="relative">
       <button
         onClick={() => setShowInstallSteps(!showInstallSteps)}
-        className={`flex items-center justify-center w-[44px] h-[44px] rounded-lg border transition-all cursor-pointer ${showInstallSteps ? "bg-white/20 border-white/30 text-white" : "bg-[#1a1a1c] border-white/10 text-gray-400 hover:text-white hover:bg-[#252528]"}`}
+        className={`flex items-center justify-center size-[44px] rounded-lg border transition-all cursor-pointer ${showInstallSteps ? "bg-white/20 border-white/30 text-white" : "bg-[#1a1a1c] border-white/10 text-gray-400 hover:text-white hover:bg-[#252528]"}`}
         title="How to install"
       >
-        <HelpCircle className="w-5 h-5" />
+        <HelpCircle className="size-5" />
       </button>
 
       <AnimatePresence>
@@ -148,29 +209,59 @@ const QueryForm = ({ project }) => {
     message: "",
   });
   const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const validateForm = () => {
     const newErrors = {};
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+    const wordCount = formData.message.trim() === "" ? 0 : formData.message.trim().split(/\s+/).length;
     if (!formData.name.trim()) newErrors.name = "Name is required";
     if (!formData.email.trim() || !emailRegex.test(formData.email))
-      newErrors.email = "Valid email is required";
+      newErrors.email = "Invalid email address";
     if (!formData.phone.trim() || !PHONE_REGEX.test(formData.phone))
-      newErrors.phone = "Valid 10-digit phone number required";
+      newErrors.phone = "Invalid phone number";
     if (!formData.city.trim()) newErrors.city = "City is required";
-    if (!formData.message.trim()) newErrors.message = "Message is required";
+    
+    if (!formData.message.trim()) {
+      newErrors.message = "Message is required";
+    } else if (wordCount < 10) {
+      newErrors.message = "Minimum 10 words required";
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     if (validateForm()) {
-      alert("Query Submitted Successfully!");
-      setFormData({ name: "", email: "", phone: "", city: "", message: "" });
-      setErrors({});
+      setIsSubmitting(true);
+      try {
+        const payload = {
+          TYPE: "WEBSITE_QUERIES",
+          FULL_NAME: formData.name,
+          MOBILE_NUMBER: formData.phone,
+          EMAIL: formData.email,
+          CITY: formData.city,
+          REQUEST_TYPE: "General Inquiry",
+          MESSAGE: formData.message,
+        };
+        await axios.post(`${ADMIN_API_URL}/Adminagent/ContactUs`, payload);
+        
+        setIsSuccess(true);
+        setFormData({ name: "", email: "", phone: "", city: "", message: "" });
+        setErrors({});
+        
+        setTimeout(() => {
+          setIsSuccess(false);
+        }, 4000);
+      } catch (error) {
+        alert("Failed to submit query. Please try again.");
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -188,69 +279,101 @@ const QueryForm = ({ project }) => {
   };
 
   return (
-    <FadeInUp inView className="bg-gradient-to-br from-[#1a1a1c] to-[#09090b] border border-white/5 rounded-xl p-6 shadow-xl">
+    <FadeInUp
+      inView
+      className="bg-gradient-to-br from-[#1a1a1c] to-[#09090b] border border-white/5 rounded-xl p-6 shadow-xl"
+    >
       <h3 className="text-white font-bold mb-1 text-lg">Have a Query?</h3>
       <p className="text-gray-400 text-xs mb-5">
-        Fill out the form below and our team will get back to you.
+        Fill out the form below. <span className="text-red-500">*</span> indicates required field.
       </p>
 
-      <form onSubmit={handleFormSubmit} className="space-y-3">
-        <InputField
-          name="name"
-          value={formData.name}
-          onChange={handleInputChange}
-          placeholder="Your Name"
-          maxLength={20}
-          error={errors.name}
-        />
-        <InputField
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleInputChange}
-          placeholder="Email Address"
-          maxLength={EMAIL_MAX_LENGTH || 50}
-          error={errors.email}
-        />
-        
-        <div className="grid grid-cols-2 gap-3">
-          <InputField
-            type="tel"
-            name="phone"
-            value={formData.phone}
-            onChange={handleInputChange}
-            placeholder="Phone Number"
-            maxLength={10}
-            error={errors.phone}
-          />
-          <InputField
-            name="city"
-            value={formData.city}
-            onChange={handleInputChange}
-            placeholder="City"
-            maxLength={30}
-            error={errors.city}
-          />
-        </div>
+      <AnimatePresence mode="wait">
+        {!isSuccess ? (
+          <motion.form
+            key="form"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 20 }}
+            onSubmit={handleFormSubmit}
+            className="space-y-5 pt-2"
+          >
+            <InputField
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+              placeholder="Your Name *"
+              maxLength={20}
+              error={errors.name}
+            />
+            <InputField
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              placeholder="Email Address *"
+              maxLength={EMAIL_MAX_LENGTH || 50}
+              error={errors.email}
+            />
 
-        <TextAreaField
-          name="message"
-          value={formData.message}
-          onChange={handleInputChange}
-          placeholder="Your Message..."
-          maxLength={500}
-          error={errors.message}
-        />
+            <div className="grid grid-cols-2 gap-3">
+              <InputField
+                type="tel"
+                name="phone"
+                value={formData.phone}
+                onChange={handleInputChange}
+                placeholder="Phone Number *"
+                maxLength={10}
+                error={errors.phone}
+              />
+              <InputField
+                name="city"
+                value={formData.city}
+                onChange={handleInputChange}
+                placeholder="City *"
+                maxLength={30}
+                error={errors.city}
+              />
+            </div>
 
-        <button
-          type="submit"
-          className="group w-full inline-flex items-center justify-center gap-2 text-[#09090b] font-bold text-sm py-3.5 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-white/10 cursor-pointer"
-          style={{ backgroundColor: project.themeColor }}
-        >
-          <span>Send Message</span>
-          <Send className="size-4 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
-        </button>
-      </form>
+            <TextAreaField
+              name="message"
+              value={formData.message}
+              onChange={handleInputChange}
+              placeholder="Your Message... *"
+              maxLength={500}
+              error={errors.message}
+            />
+
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className={`group w-full inline-flex items-center justify-center gap-2 text-[#09090b] font-bold text-sm py-3.5 rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-white/10 ${isSubmitting ? "opacity-75 cursor-not-allowed" : "cursor-pointer"}`}
+              style={{ backgroundColor: project.themeColor }}
+            >
+              <span>{isSubmitting ? "Sending..." : "Send Message"}</span>
+              {!isSubmitting && <Send className="size-4 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />}
+            </button>
+          </motion.form>
+        ) : (
+          <motion.div
+            key="success"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            className="flex flex-col items-center justify-center py-8 text-center"
+          >
+            <div className="w-16 h-16 rounded-full bg-green-500/20 flex items-center justify-center mb-4">
+              <CheckCircle2 className="w-8 h-8 text-green-500" />
+            </div>
+            <h4 className="text-xl font-bold text-white mb-2">Thank You!</h4>
+            <p className="text-sm text-gray-400">
+              Your query has been submitted successfully.<br />
+              Our team will reach out to you shortly.
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </FadeInUp>
   );
 };
@@ -260,16 +383,27 @@ const ProjectDetails = () => {
   const navigate = useNavigate();
   const [showInstallSteps, setShowInstallSteps] = useState(false);
 
-  const project = PROJECTS_DATA.find((p) => p.id === projectId);
+  const { projects, loading, error } = useProjects();
+  const project = projects.find((p) => p.id === projectId);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [projectId]);
 
-  if (!project) {
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-[#09090b] flex items-center justify-center">
+        <div className="size-10 border-4 border-[#75ccc3] border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    );
+  }
+
+  if (error || !project) {
     return (
       <div className="min-h-screen bg-[#09090b] flex items-center justify-center text-white flex-col gap-4">
-        <h1 className="text-2xl font-bold">Project Not Found</h1>
+        <h1 className="text-2xl font-bold">
+          {error ? "Error loading project" : "Project Not Found"}
+        </h1>
         <button
           onClick={() => navigate("/about")}
           className="px-6 py-2 bg-[#75ccc3] text-gray-900 rounded-full font-semibold cursor-pointer"
@@ -298,7 +432,7 @@ const ProjectDetails = () => {
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="w-28 h-28 sm:w-36 sm:h-36 shrink-0 bg-white p-0.5 rounded-full shadow-xl flex items-center justify-center border-4 border-white/10"
+              className="size-28 sm:size-36 shrink-0 bg-white p-0.5 rounded-full shadow-xl flex items-center justify-center border-4 border-white/10 overflow-hidden"
             >
               <img
                 src={project.logo}
@@ -310,7 +444,7 @@ const ProjectDetails = () => {
             <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
               <FadeInUp className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-3">
                 <div
-                  className="w-2 h-2 rounded-full animate-pulse"
+                  className="size-2 rounded-full animate-pulse"
                   style={{ backgroundColor: project.themeColor }}
                 />
                 <span className="text-[11px] font-semibold tracking-wide text-gray-300 uppercase">
@@ -318,26 +452,51 @@ const ProjectDetails = () => {
                 </span>
               </FadeInUp>
 
-              <FadeInUp delay={0.1} className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-2">
+              <FadeInUp
+                delay={0.1}
+                className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-2"
+              >
                 {project.shortName}{" "}
                 <span style={{ color: project.themeColor }}>Project</span>
               </FadeInUp>
 
-              <FadeInUp delay={0.2} className="text-gray-400 text-sm sm:text-base leading-snug mb-5 max-w-2xl">
+              <FadeInUp
+                delay={0.2}
+                className="text-gray-400 text-sm sm:text-base leading-snug mb-5 max-w-2xl"
+              >
                 {project.name}
               </FadeInUp>
 
-              <FadeInUp delay={0.3} className="flex flex-col w-full md:w-auto items-center md:items-start">
+              <FadeInUp
+                delay={0.3}
+                className="flex flex-col w-full md:w-auto items-center md:items-start"
+              >
                 <div className="flex flex-row items-center justify-center md:justify-start gap-3 w-full">
-                  <button className="flex items-center gap-2 px-5 py-2.5 bg-white text-gray-900 hover:bg-gray-200 rounded-lg font-bold transition-all cursor-pointer shadow-lg">
-                    <Download className="size-4" />
-                    <span>Download APK</span>
-                  </button>
+                  {project.appInfo.apkUrl ? (
+                    <a
+                      href={project.appInfo.apkUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      download
+                      className="flex items-center gap-2 px-5 py-2.5 bg-white text-gray-900 hover:bg-gray-200 rounded-lg font-bold transition-all cursor-pointer shadow-lg"
+                    >
+                      <Download className="size-4" />
+                      <span>Download APK</span>
+                    </a>
+                  ) : (
+                    <button
+                      disabled
+                      className="flex items-center gap-2 px-5 py-2.5 bg-gray-500 text-gray-300 rounded-lg font-bold shadow-lg cursor-not-allowed"
+                    >
+                      <Download className="size-4" />
+                      <span>Not Available</span>
+                    </button>
+                  )}
 
-                  <InstallationTooltip 
-                    showInstallSteps={showInstallSteps} 
-                    setShowInstallSteps={setShowInstallSteps} 
-                    project={project} 
+                  <InstallationTooltip
+                    showInstallSteps={showInstallSteps}
+                    setShowInstallSteps={setShowInstallSteps}
+                    project={project}
                   />
                 </div>
               </FadeInUp>
@@ -389,25 +548,28 @@ const ProjectDetails = () => {
             </div>
 
             <div className="lg:col-span-5 xl:col-span-4 space-y-6">
-              <FadeInUp inView className="bg-[#1a1a1c] border border-white/5 rounded-xl p-5">
+              <FadeInUp
+                inView
+                className="bg-[#1a1a1c] border border-white/5 rounded-xl p-5"
+              >
                 <h3 className="text-white font-bold mb-3 text-base">
                   App Specs
                 </h3>
                 <div className="space-y-2">
-                  <SpecRow 
-                    label="Platform" 
-                    value={project.appInfo.os} 
-                    borderClass="pb-2 border-b border-white/5" 
+                  <SpecRow
+                    label="Platform"
+                    value={project.appInfo.os}
+                    borderClass="pb-2 border-b border-white/5"
                   />
-                  <SpecRow 
-                    label="Version" 
-                    value={project.appInfo.version} 
-                    isMonospace 
+                  <SpecRow
+                    label="Version"
+                    value={project.appInfo.version}
+                    isMonospace
                   />
-                  <SpecRow 
-                    label="Released" 
-                    value={project.appInfo.releaseDate} 
-                    borderClass="pt-2 border-t border-white/5" 
+                  <SpecRow
+                    label="Released"
+                    value={project.appInfo.releaseDate}
+                    borderClass="pt-2 border-t border-white/5"
                   />
                 </div>
               </FadeInUp>

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import HandDrawnTitle from '../common/HandDrawnTitle';
-import { PROJECTS_DATA } from '../../constants/projectsData';
+import { useProjects } from '../../hooks/useProjects';
 
 
 const FadeInUp = ({ children, className = "", delay = 0, yOffset = 10 }) => (
@@ -25,16 +25,16 @@ const ProjectCard = ({ project, index }) => (
       yOffset={20}
       className="relative bg-[#161618] rounded-[2rem] p-6 sm:p-8 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl"
     >
-      <div className="absolute top-0 right-0 w-16 h-16 sm:w-20 sm:h-20 bg-[#09090b] rounded-bl-[1.5rem] z-20 flex items-start justify-end pt-2 pr-2 sm:pt-4 sm:pr-4">
-        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white flex items-center justify-center transition-all duration-500 group-hover:rotate-45 group-hover:scale-110 shadow-lg">
+      <div className="absolute top-0 right-0 size-16 sm:size-20 bg-[#09090b] rounded-bl-[1.5rem] z-20 flex items-start justify-end pt-2 pr-2 sm:pt-4 sm:pr-4">
+        <div className="size-10 sm:size-12 rounded-full bg-white flex items-center justify-center transition-all duration-500 group-hover:rotate-45 group-hover:scale-110 shadow-lg">
           <ArrowRight className="w-5 h-5 text-[#09090b]" />
         </div>
         <div 
-          className="absolute top-0 -left-6 w-6 h-6 pointer-events-none" 
+          className="absolute top-0 -left-6 size-6 pointer-events-none" 
           style={{ background: 'radial-gradient(circle at 0% 100%, transparent 24px, #09090b 24.5px)' }}
         />
         <div 
-          className="absolute -bottom-6 right-0 w-6 h-6 pointer-events-none" 
+          className="absolute -bottom-6 right-0 size-6 pointer-events-none" 
           style={{ background: 'radial-gradient(circle at 0% 100%, transparent 24px, #09090b 24.5px)' }}
         />
       </div>
@@ -45,8 +45,8 @@ const ProjectCard = ({ project, index }) => (
       />
 
       <div className="relative z-10 flex flex-col h-full pt-2">
-        <div className="w-20 h-20 sm:w-24 sm:h-24 bg-white rounded-[1.2rem] p-3 sm:p-4 shadow-xl flex items-center justify-center shrink-0 mb-8 border border-white/10">
-          <img src={project.logo} alt={project.name} className="w-full h-full object-contain" />
+        <div className="size-20 sm:size-24 bg-white rounded-[1.2rem] p-3 sm:p-4 shadow-xl flex items-center justify-center shrink-0 mb-8 border border-white/10 overflow-hidden">
+          <img src={project.logo} alt={project.name} className="w-full h-full object-contain rounded-full" />
         </div>
         
         <div className="mt-auto pr-10">
@@ -74,11 +74,13 @@ const ProjectCard = ({ project, index }) => (
 
 
 const ActiveProjects = () => {
+  const { projects, loading, error } = useProjects();
+
   return (
     <section className="relative py-16 md:py-24 bg-[#09090b] overflow-hidden">
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 right-0 w-[400px] h-[400px] bg-gradient-to-bl from-[#9cd4af]/5 to-transparent rounded-full blur-[100px]" />
-        <div className="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-[#75ccc3]/5 to-transparent rounded-full blur-[100px]" />
+        <div className="absolute top-1/4 right-0 size-[400px] bg-gradient-to-bl from-[#9cd4af]/5 to-transparent rounded-full blur-[100px]" />
+        <div className="absolute bottom-1/4 left-0 size-[400px] bg-gradient-to-tr from-[#75ccc3]/5 to-transparent rounded-full blur-[100px]" />
       </div>
 
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -92,11 +94,19 @@ const ActiveProjects = () => {
           </FadeInUp>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-5xl mx-auto">
-          {PROJECTS_DATA.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
-          ))}
-        </div>
+        {loading ? (
+          <div className="flex justify-center items-center py-20">
+            <div className="size-10 border-4 border-[#75ccc3] border-t-transparent rounded-full animate-spin"></div>
+          </div>
+        ) : error ? (
+          <div className="text-center text-red-500 py-20 font-medium">{error}</div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-5xl mx-auto">
+            {projects.map((project, index) => (
+              <ProjectCard key={project.id} project={project} index={index} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
